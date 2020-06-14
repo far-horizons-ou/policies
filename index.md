@@ -1,9 +1,9 @@
 ---
-title: 'Basecamp Policies and Terms of Service'
+title: 'Chadwick OÜ Policies and Terms of Service'
 description: 'All the policies and legal stuff for Basecamp customers. We try to make all our policies as clear, fair, and readable as possible.'
 ---
 
-# Basecamp Policies, Terms, and Legal Stuff
+# Chadwick OÜ Policies, Terms, and Legal Stuff
 
 The rough print and the fine print. We try to make all our policies as clear, fair, and readable as possible.
 
@@ -14,7 +14,3 @@ The rough print and the fine print. We try to make all our policies as clear, fa
 * [Refund policy](refund/index.md)
 * [Use Restrictions policy](abuse/index.md)
 * [Security overview](security/index.md)
-* [Until the End of the Internet](until-the-end-of-the-internet/index.md)
-* [Taxes](taxes/index.md)
-* Account ownership information for [Basecamp 2](https://2.basecamp-help.com/article/411-account-ownership) and [Basecamp 3](ownership-bc3/index.md)
-* [Service Level Agreement (SLA) for Basecamp Big](sla/index.md)
