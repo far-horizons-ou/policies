@@ -5,7 +5,7 @@ description: Guiding principles and process for investigating abuse reports
 
 # How we handle abusive usage
 
-*Last updated: June 14, 2020*
+_Last updated: June 14, 2020_
 
 We build our products to make it easier to understand the world. We are proud of that purpose and trust that our customers use our products for appropriate endeavors.
 
@@ -67,6 +67,6 @@ For other cases, we’ll take a case-by-case approach to clear things up.
 
 If we terminate an account without notice, the decision is final.
 
-For other cases, we will consider good faith appeals sent to [appeals@aspect360.co](mailto:appeals@aspect360.co) by the account owner within 14 calendar days.
+For other cases, we will consider good faith appeals sent to [appeals@chadwick-ou.com](mailto:appeals@chadwick-ou.com) by the account owner within 14 calendar days.
 
-**This policy and process applies to any product created and owned by Chadwick OÜ. That includes Twirrl, and Aspect360.*
+\*_This policy and process applies to any product created and owned by Chadwick OÜ. That includes Twirrl, and Pushbear._

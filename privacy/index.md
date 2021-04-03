@@ -5,11 +5,11 @@ description: The privacy of your data — and it is your data, not ours! — is 
 
 # Privacy policy
 
-*Last updated: June 148, 2020*
+_Last updated: June 148, 2020_
 
 The privacy of your data — and it is your data, not ours! — is a big deal to us. In this policy, we lay out: what data we collect and why; how your data is handled; and your rights to your data. We promise we never sell your data: never have, never will.
 
-This policy applies to all products built and maintained by Chadwick OÜ including Twirrl, and Aspect360.
+This policy applies to all products built and maintained by Chadwick OÜ including Twirrl, and Pushbear.
 
 ## What we collect and why
 
@@ -35,8 +35,6 @@ Web analytics data — described further in the Website Interactions section —
 
 When you browse our marketing pages or applications, your browser automatically shares certain information such as which operating system and browser version you are using. We track that information, along with the pages you are visiting, page load timing, and which website referred you for statistical purposes like conversion rates and to test new designs. We sometimes track specific link clicks to help inform some design decisions. These web analytics data are tied to your IP address and user account if applicable and you are signed into our Services. We blind all of these individual identifiers after 30 days.
 
-Historically — including within the last 12 months — we have used third-party web analytics software. We no longer do for our actively sold and developed products and their marketing sites (Basecamp and HEY). We are in the process of removing third party web analytics software from our other products and web properties.
-
 ### Cookies and Do Not Track
 
 We do use persistent first-party cookies to store certain preferences, make it easier for you to use our applications, and support some in-house analytics. A cookie is a piece of text stored by your browser to help it remember your login information, site preferences, and more. You can adjust cookie retention settings in your own browser. To learn more about cookies, including how to view which cookies have been set and how to manage and delete them, please visit: [www.allaboutcookies.org](https://www.allaboutcookies.org).
@@ -59,45 +57,43 @@ We also do not collect any biometric data. You are given the option to add a pic
 
 Our default practice is to not access your information. The only times we’ll ever access or share your info are:
 
-* **To provide products or services you've requested**. We do use some third-party services to run our applications and only to the extent necessary process some or all of your personal information via these third parties. You can view the list of third-party services we use in each product: [Twirrl](twirrl-subprocessors/index.md), and [Aspect360](aspect360-subprocessors/index.md). Having subprocessors means we are using technology to access your data. No Chadwick OÜ human looks at your data for these purposes. We also use some other processors for other business functions, which you can view: [Company processors](company-processors/index.md).
-* **To help you troubleshoot or squash a software bug, with your permission.** If at any point we need to access your account to help you with a Support case, we will ask for your consent before proceeding.
-* **To investigate, prevent, or take action regarding [restricted uses](../abuse/index.md).** Accessing a customer’s account when investigating potential abuse is a measure of last resort. We have an obligation to protect the privacy and safety of both our customers and the people reporting issues to us. We do our best to balance those responsibilities throughout the process. If we do discover you are using our products for a restricted purpose, we will report the incident to the appropriate authorities.
-* **When required under applicable law.** If the appropriate law enforcement authorities have the necessary warrant, criminal subpoena, or court order requiring we share data, we have to comply. Otherwise, we flat-out reject requests from local and federal law enforcement when they seek data. And unless we’re legally prevented from it, we’ll always inform you when such requests are made. ***We have never received a National Security Letter or Foreign Intelligence Surveillance Act (FISA) order.***
+- **To provide products or services you've requested**. We do use some third-party services to run our applications and only to the extent necessary process some or all of your personal information via these third parties. You can view the list of third-party services we use in each product: [Twirrl](twirrl-subprocessors/index.md), and [Pushbear](pushbear-subprocessors/index.md). Having subprocessors means we are using technology to access your data. No Chadwick OÜ human looks at your data for these purposes. We also use some other processors for other business functions, which you can view: [Company processors](company-processors/index.md).
+- **To help you troubleshoot or squash a software bug, with your permission.** If at any point we need to access your account to help you with a Support case, we will ask for your consent before proceeding.
+- **To investigate, prevent, or take action regarding [restricted uses](../abuse/index.md).** Accessing a customer’s account when investigating potential abuse is a measure of last resort. We have an obligation to protect the privacy and safety of both our customers and the people reporting issues to us. We do our best to balance those responsibilities throughout the process. If we do discover you are using our products for a restricted purpose, we will report the incident to the appropriate authorities.
+- **When required under applicable law.** If the appropriate law enforcement authorities have the necessary warrant, criminal subpoena, or court order requiring we share data, we have to comply. Otherwise, we flat-out reject requests from local and federal law enforcement when they seek data. And unless we’re legally prevented from it, we’ll always inform you when such requests are made. **_We have never received a National Security Letter or Foreign Intelligence Surveillance Act (FISA) order._**
 
 If Chadwick OÜ is acquired by or merged with another company — we don’t plan on that, but if it happens — we’ll notify you well before any info about you is transferred and becomes subject to a different privacy policy.
 
 ## Location of Site and Data
 
-Our products and other web properties are operated in both the  United States and the European Union. If you are located in the European Union or elsewhere outside of the United States, please be aware that any information you provide to us may be transferred to the United States. By using our Site, participating in any of our services and/or providing us with your information, you consent to this transfer.
+Our products and other web properties are operated in both the United States and the European Union. If you are located in the European Union or elsewhere outside of the United States, please be aware that any information you provide to us may be transferred to the United States. By using our Site, participating in any of our services and/or providing us with your information, you consent to this transfer.
 
 ## Your Rights With Respect to Your Information
 
-At Chadwick OÜ, we apply the same data rights to all customers, regardless of their location. Currently some of the most privacy-forward regulations in place are the European Union’s General Data Protection Regulation (“GDPR”) and California Consumer Privacy Act (“CCPA”) in the US. Basecamp recognizes all of the rights granted in these regulations, except as limited by applicable law. These rights include:
+At Chadwick OÜ, we apply the same data rights to all customers, regardless of their location. Currently some of the most privacy-forward regulations in place are the European Union’s General Data Protection Regulation (“GDPR”) and California Consumer Privacy Act (“CCPA”) in the US. Chadwick OÜ recognizes all of the rights granted in these regulations, except as limited by applicable law. These rights include:
 
-* **Right to Know.** You have the right to know what personal information is collected, used, shared or sold. We outline both the categories and specific bits of data we collect, as well as how they are used, in this privacy policy.
-* **Right of Access.** This includes your right to access the personal information we gather about you, and your right to obtain information about the sharing, storage, security and processing of that information.
-* **Right to Correction.** You have the right to request correction of your personal information.
-* **Right to Erasure / “To be Forgotten”.** This is your right to request, subject to certain limitations under applicable law, that your personal information be erased from our possession and, by extension, all of our service providers. Fulfillment of some data deletion requests may prevent you from using Chadwick OÜ services because our applications may then no longer work. In such cases, a data deletion request may result in closing your account.
-* **Right to Complain.** You have the right to make a complaint regarding our handling of your personal information with the appropriate supervisory authority. To identify your specific authority or find out more about this right, EU individuals should go to [https://edpb.europa.eu/about-edpb/board/members_en](https://edpb.europa.eu/about-edpb/board/members_en).
-* **Right to Restrict Processing.** This is your right to request restriction of how and why your personal information is used or processed, including opting out of sale of personal information. (Again: we never have and never will sell your personal data).
-* **Right to Object.** You have the right, in certain situations, to object to how or why your personal information is processed.
-* **Right to Portability.** You have the right to receive the personal information we have about you and the right to transmit it to another party.
-* **Right to not be subject to Automated Decision-Making.** You have the right to object and prevent any decision that could have a legal, or similarly significant, effect on you from being made solely based on automated processes. This right is limited, however, if the decision is necessary for performance of any contract between you and us, is allowed by applicable law, or is based on your explicit consent.
-* **Right to Non-Discrimination.** This right stems from the CCPA. We do not and will not charge you a different amount to use our products, offer you different discounts, or give you a lower level of customer service because you have exercised your data privacy rights. However, the exercise of certain rights (such as the right “to be forgotten”) may, by virtue of your exercising those rights, prevent you from using our Services.
+- **Right to Know.** You have the right to know what personal information is collected, used, shared or sold. We outline both the categories and specific bits of data we collect, as well as how they are used, in this privacy policy.
+- **Right of Access.** This includes your right to access the personal information we gather about you, and your right to obtain information about the sharing, storage, security and processing of that information.
+- **Right to Correction.** You have the right to request correction of your personal information.
+- **Right to Erasure / “To be Forgotten”.** This is your right to request, subject to certain limitations under applicable law, that your personal information be erased from our possession and, by extension, all of our service providers. Fulfillment of some data deletion requests may prevent you from using Chadwick OÜ services because our applications may then no longer work. In such cases, a data deletion request may result in closing your account.
+- **Right to Complain.** You have the right to make a complaint regarding our handling of your personal information with the appropriate supervisory authority. To identify your specific authority or find out more about this right, EU individuals should go to [https://edpb.europa.eu/about-edpb/board/members_en](https://edpb.europa.eu/about-edpb/board/members_en).
+- **Right to Restrict Processing.** This is your right to request restriction of how and why your personal information is used or processed, including opting out of sale of personal information. (Again: we never have and never will sell your personal data).
+- **Right to Object.** You have the right, in certain situations, to object to how or why your personal information is processed.
+- **Right to Portability.** You have the right to receive the personal information we have about you and the right to transmit it to another party.
+- **Right to not be subject to Automated Decision-Making.** You have the right to object and prevent any decision that could have a legal, or similarly significant, effect on you from being made solely based on automated processes. This right is limited, however, if the decision is necessary for performance of any contract between you and us, is allowed by applicable law, or is based on your explicit consent.
+- **Right to Non-Discrimination.** This right stems from the CCPA. We do not and will not charge you a different amount to use our products, offer you different discounts, or give you a lower level of customer service because you have exercised your data privacy rights. However, the exercise of certain rights (such as the right “to be forgotten”) may, by virtue of your exercising those rights, prevent you from using our Services.
 
 Many of these rights can be exercised by signing in and directly updating your account information.
 
-If you have questions about exercising these rights or need assistance, please contact us at [privacy@aspect360.co](mailto:privacy@aspect360.co) or at Chadwick OÜ, Sepapaja tn 6 Tallinn Harjumaa 15551. For requests to delete personal information or know what personal information has been collected, we will first verify your identity using a combination of at least two pieces of information already collected including your user email address. If an authorized agent is corresponding on your behalf, we will first need written consent with a signature from the account holder before proceeding.
+If you have questions about exercising these rights or need assistance, please contact us at [privacy@chadwick-ou.com](mailto:privacy@chadwick-ou.com) or at Chadwick OÜ, Sepapaja tn 6 Tallinn Harjumaa 15551. For requests to delete personal information or know what personal information has been collected, we will first verify your identity using a combination of at least two pieces of information already collected including your user email address. If an authorized agent is corresponding on your behalf, we will first need written consent with a signature from the account holder before proceeding.
 
 If you are in the EU, you can identify your specific authority to file a complaint or find out more about GDPR, at [https://edpb.europa.eu/about-edpb/board/members_en](https://edpb.europa.eu/about-edpb/board/members_en).
-
 
 ## How we secure your data
 
 All data is encrypted via [SSL/TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) when transmitted from our servers to your browser. The database backups are also encrypted. Most data are not encrypted while they live in our database (since it needs to be ready to send to you when you need it), but we go to great lengths to secure your data at rest.
 
 For more information about how we keep your information secure, please review our [security overview](../security/index.md).
-
 
 ## When you delete data in your product accounts
 
@@ -107,6 +103,6 @@ We also delete your data after an account is cancelled. In this case, there is n
 
 ## Changes & questions
 
-We may update this policy as needed to comply with relevant regulations and reflect any new practices. You can view a history of the changes to our policies since mid-2018 [on Github](https://github.com/chadwick-ou/policies/commits/master). Whenever we make a significant change to our policies, we will also announce them on our [company blog](https://aspect360.co/blog/).
+We may update this policy as needed to comply with relevant regulations and reflect any new practices. You can view a history of the changes to our policies since mid-2018 [on Github](https://github.com/chadwick-ou/policies/commits/master). Whenever we make a significant change to our policies, we will also announce them on our [company blog](https://chadwick-ou.com/blog/).
 
-Have any questions, comments, or concerns about this privacy policy, your data, or your rights with respect to your information? Please get in touch by emailing us at [privacy@aspect360.co](mailto:privacy@aspect360.co) and we’ll be happy to answer them!
+Have any questions, comments, or concerns about this privacy policy, your data, or your rights with respect to your information? Please get in touch by emailing us at [privacy@chadwick-ou.com](mailto:privacy@chadwick-ou.com) and we’ll be happy to answer them!
