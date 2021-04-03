@@ -16,7 +16,7 @@ We also recognize that technology is an amplifier: it can enable the helpful and
 - **Infringing on intellectual property**: You can’t use Chadwick OÜ products to make or disseminate work that uses the intellectual property of others beyond the bounds of [fair use](https://www.copyright.gov/fair-use/more-info.html).
 - **Malware or spyware**: Code for good, not evil. If you are using our products to make or distribute anything that qualifies as malware or spyware — including remote user surveillance — begone.
 - **Phishing or otherwise attempting fraud**: It is not okay to lie about who you are or who you affiliate with to steal from, extort, or otherwise harm others.
-- **Spamming**: No one wants unsolicited commercial emails. We don’t tolerate folks (including their bots) using Chadwick OÜ products for spamming purposes. If your emails don’t pass muster with [CAN-SPAM](https://www.ftc.gov/tips-advice/business-center/guidance/can-spam-act-compliance-guide-business) or any other anti-spam law, it’s not allowed.
+- **Spamming**: No one wants unsolicited commercial emails or SMS messages. We don’t tolerate folks (including their bots) using Chadwick OÜ products for spamming purposes. If your emails and SMS messages don’t pass muster with [CAN-SPAM](https://www.ftc.gov/tips-advice/business-center/guidance/can-spam-act-compliance-guide-business) or any other anti-spam law, it’s not allowed.
 - **Violence, or threats thereof**: If an activity qualifies as violent crime in the European Union or where you live, you may not use Chadwick OÜ products to plan, perpetrate, or threaten that activity.
 
 We’ve outlined these restrictions to be clear about what we won’t stand for. That said, this list is by no means exhaustive. We will make changes over time.
@@ -29,4 +29,4 @@ Please share as much as you are comfortable with about the account, the content 
 
 Someone on our team will respond within one business day to let you know we’ve begun investigating. We will also let you know the outcome of our investigation (unless you ask us not to or we are not allowed to under law).
 
-\*_This policy and process applies to any product created and owned by Chadwick OÜ. That includes Twirrl, and Pushbear._
+\*_This policy and process applies to any product created and owned by Chadwick OÜ. That includes Twirrl, and Parrot._

@@ -40,4 +40,4 @@ You can notify us of either copyright infringement claims or DCMA counter-notifi
 Sepapaja tn 6
 Tallinn Harjumaa 15551
 
-\*_This policy and process applies to any product created and owned by Chadwick OÜ. That includes Twirrl and Pushbear._
+\*_This policy and process applies to any product created and owned by Chadwick OÜ. That includes Twirrl and Parrot._

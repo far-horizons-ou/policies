@@ -69,4 +69,4 @@ If we terminate an account without notice, the decision is final.
 
 For other cases, we will consider good faith appeals sent to [appeals@chadwick-ou.com](mailto:appeals@chadwick-ou.com) by the account owner within 14 calendar days.
 
-\*_This policy and process applies to any product created and owned by Chadwick OÜ. That includes Twirrl, and Pushbear._
+\*_This policy and process applies to any product created and owned by Chadwick OÜ. That includes Twirrl, and Parrot._

@@ -9,7 +9,7 @@ _Last updated: June 148, 2020_
 
 The privacy of your data — and it is your data, not ours! — is a big deal to us. In this policy, we lay out: what data we collect and why; how your data is handled; and your rights to your data. We promise we never sell your data: never have, never will.
 
-This policy applies to all products built and maintained by Chadwick OÜ including Twirrl, and Pushbear.
+This policy applies to all products built and maintained by Chadwick OÜ including Twirrl, and Parrot.
 
 ## What we collect and why
 
@@ -57,7 +57,7 @@ We also do not collect any biometric data. You are given the option to add a pic
 
 Our default practice is to not access your information. The only times we’ll ever access or share your info are:
 
-- **To provide products or services you've requested**. We do use some third-party services to run our applications and only to the extent necessary process some or all of your personal information via these third parties. You can view the list of third-party services we use in each product: [Twirrl](twirrl-subprocessors/index.md), and [Pushbear](pushbear-subprocessors/index.md). Having subprocessors means we are using technology to access your data. No Chadwick OÜ human looks at your data for these purposes. We also use some other processors for other business functions, which you can view: [Company processors](company-processors/index.md).
+- **To provide products or services you've requested**. We do use some third-party services to run our applications and only to the extent necessary process some or all of your personal information via these third parties. You can view the list of third-party services we use in each product: [Twirrl](twirrl-subprocessors/index.md), and [Parrot](parrot-subprocessors/index.md). Having subprocessors means we are using technology to access your data. No Chadwick OÜ human looks at your data for these purposes. We also use some other processors for other business functions, which you can view: [Company processors](company-processors/index.md).
 - **To help you troubleshoot or squash a software bug, with your permission.** If at any point we need to access your account to help you with a Support case, we will ask for your consent before proceeding.
 - **To investigate, prevent, or take action regarding [restricted uses](../abuse/index.md).** Accessing a customer’s account when investigating potential abuse is a measure of last resort. We have an obligation to protect the privacy and safety of both our customers and the people reporting issues to us. We do our best to balance those responsibilities throughout the process. If we do discover you are using our products for a restricted purpose, we will report the incident to the appropriate authorities.
 - **When required under applicable law.** If the appropriate law enforcement authorities have the necessary warrant, criminal subpoena, or court order requiring we share data, we have to comply. Otherwise, we flat-out reject requests from local and federal law enforcement when they seek data. And unless we’re legally prevented from it, we’ll always inform you when such requests are made. **_We have never received a National Security Letter or Foreign Intelligence Surveillance Act (FISA) order._**
