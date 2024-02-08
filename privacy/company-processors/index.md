@@ -1,6 +1,6 @@
 ---
 title: Company Processors
-description: Far Horizon OÜ  uses some other third-party processors for company purposes outside of delivering our services.
+description: Far Horizons OÜ  uses some other third-party processors for company purposes outside of delivering our services.
 ---
 
 # Company processors

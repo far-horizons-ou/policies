@@ -2,12 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css"> 
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Merriweather', 'serif'],
+            },
+          }
+        }
+      }
+    </script>   
     <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <section>
+    <section class="mt-8 mx-auto container prose">
       {{ content }}
     </section>
   </body>
 </html>
+
