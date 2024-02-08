@@ -1,23 +1,23 @@
 ---
 title: Terms of Service
-description: All the terms that you agree to when you sign up for a Far Horizons OÜ product.
+description: All the terms that you agree to when you sign up for a {{site.company_name}} product.
 ---
 
 # Terms of Service
 
 _Last updated: June 14, 2020_
 
-From everyone at Far Horizons OÜ, thank you for using our products! We build them to help you create amazing content. Because we don't know every one of our customers personally, we have to put in place some Terms of Service to help keep the ship afloat.
+From everyone at {{site.company_name}}, thank you for using our products! We build them to help you create amazing content. Because we don't know every one of our customers personally, we have to put in place some Terms of Service to help keep the ship afloat.
 
-When we say “Company”, “we”, “our”, or “us” in this document, we are referring to Far Horizons OÜ. Far Horizons OÜ is an Estonian company created as a legal entity to facilitate the creation of the products you use.
+When we say “Company”, “we”, “our”, or “us” in this document, we are referring to {{site.company_name}}. {{site.company_name}} is an Estonian company created as a legal entity to facilitate the creation of the products you use.
 
-When we say “Services”, we mean any product created and maintained by Far Horizons OÜ. That includes Twirrl and Parrot, whether delivered within a web browser, desktop application, mobile application, or another format.
+When we say “Services”, we mean any product created and maintained by {{site.company_name}}. That includes Twirrl and Parrot, whether delivered within a web browser, desktop application, mobile application, or another format.
 
-We may update these Terms of Service in the future. You can track all changes made [on Github](https://github.com/chadwick-ou/policies/commits/master). Typically these changes have been to clarify some of these terms by linking to an expanded related policy. Whenever we make a significant change to our policies, we will also announce them on our [company blog](https://chadwick-ou.com/blog).
+We may update these Terms of Service in the future. You can track all changes made [on Github]({{site.policies_github_url}}/commits/main). Typically these changes have been to clarify some of these terms by linking to an expanded related policy. Whenever we make a significant change to our policies, we will also announce them on our [company blog]({{site.company_url}}/blog).
 
 When you use our Services, now or in the future, you are agreeing to the latest Terms of Service. That's true for any of our existing and future products and all features that we add to our Services over time. There may be times where we do not exercise or enforce any right or provision of the Terms of Service; in doing so, we are not waiving that right or provision. **These terms do contain a limitation of our liability.**
 
-If you violate of any of the terms, we may terminate your account. That's a broad statement and it means you need to place a lot of trust in us. We do our best to deserve that trust by being open about [who we are](https://chadwick-ou.com/about/team), [how we work](https://chadwick-ou.com/blog/how-we-work), and keeping an open door to [your feedback](hello@chadwick-ou.com).
+If you violate of any of the terms, we may terminate your account. That's a broad statement and it means you need to place a lot of trust in us. We do our best to deserve that trust by being open about [who we are]({{site.company_url}}/about/team), [how we work]({{site.company_url}}/blog/how-we-work), and keeping an open door to [your feedback]({{site.email}}).
 
 ## Account Terms
 
@@ -52,21 +52,21 @@ If you violate of any of the terms, we may terminate your account. That's a broa
 1. Your use of the Services is at your sole risk. We provide these Services on an “as is” and “as available” basis. We do not offer service-level agreements for our Services but do take uptime of our applications seriously. Visit [https://status.twirrl.co/](https://status.twirrl.co/) and [https://status.parrot.dev/](https://status.parrot.dev/) to see the status of our Services.
 2. We reserve the right to temporarily disable your account if your usage significantly exceeds the average usage of other customers of the Services. Of course, we'll reach out to the account owner before taking any action except in rare cases where the level of use may negatively impact the performance of the Service for other customers.
 3. We take many measures to protect and secure your data through backups, redundancies, and encryption. We enforce encryption for data transmission from the public Internet. There are some edge cases where we may send your data through our network unencrypted. Please refer to our [Security Overview](../security/index.md) for full details.
-4. When you use our Services, you entrust us with your data. We take that trust to heart. You agree that Far Horizons OÜ may process your data as described in our [Privacy Policy](../privacy/index.md) and for no other purpose. We as humans can access your data for the following reasons:
+4. When you use our Services, you entrust us with your data. We take that trust to heart. You agree that {{site.company_name}} may process your data as described in our [Privacy Policy](../privacy/index.md) and for no other purpose. We as humans can access your data for the following reasons:
 
 - To help you with support requests you make. We'll ask for express consent before accessing your account.
-- To safeguard Far Horizons OÜ. We'll look at logs and metadata as part of our work to ensure the security of your data and the Services as a whole. If necessary, we may also access accounts as part of an [abuse report investigation](../abuse/how-we-handle/index.md).
+- To safeguard {{site.company_name}}. We'll look at logs and metadata as part of our work to ensure the security of your data and the Services as a whole. If necessary, we may also access accounts as part of an [abuse report investigation](../abuse/how-we-handle/index.md).
 - To the extent required by applicable law.
 
 5. We use third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run the Services. You can see a list of all subprocessors who handle personal data for [Twirrl](../privacy/twirrl-subprocessors/index.md), and [Parrot](../privacy/parrot-subprocessors/index.md).
-6. We process any data you share with us only for the purpose you signed up for and as described in these Terms of Service, [Privacy policy](../privacy/index.md), and [other policies](../index.md). We do not retain, use, disclose, or sell any of that information for any other commercial purposes unless we have your explicit permission. And on the flip-side, you agree to comply with your requirements and not use Far Horizons OÜ’s Services in a way that violates the regulations.
+6. We process any data you share with us only for the purpose you signed up for and as described in these Terms of Service, [Privacy policy](../privacy/index.md), and [other policies](../index.md). We do not retain, use, disclose, or sell any of that information for any other commercial purposes unless we have your explicit permission. And on the flip-side, you agree to comply with your requirements and not use {{site.company_name}}’s Services in a way that violates the regulations.
 
 ## Copyright and Content Ownership
 
 1. All content posted on the Services must comply with E.U. copyright law. We provide details on [how to file a copyright infringement claim](../copyright/index.md).
 2. We claim no intellectual property rights over the material you provide to the Services. All materials uploaded remain yours.
 3. We do not pre-screen content, but reserve the right (but not the obligation) in our sole discretion to refuse or remove any content that is available via the Service.
-4. The names, look, and feel of the Services are copyright© to the Company. All rights reserved. You may not duplicate, copy, or reuse any portion of the HTML, CSS, JavaScript, or visual design elements without express written permission from the Company. You must request permission to use the Company's logo or any Service logos for promotional purposes. Please [email us](hello@chadwick-ou.com) requests to use logos. We reserve the right to rescind this permission if you violate these Terms of Service.
+4. The names, look, and feel of the Services are copyright© to the Company. All rights reserved. You may not duplicate, copy, or reuse any portion of the HTML, CSS, JavaScript, or visual design elements without express written permission from the Company. You must request permission to use the Company's logo or any Service logos for promotional purposes. Please [email us]({{site.email}}) requests to use logos. We reserve the right to rescind this permission if you violate these Terms of Service.
 5. You agree not to reproduce, duplicate, copy, sell, resell or exploit any portion of the Services, use of the Services, or access to the Services without the express written permission by the Company.
 6. You must not modify another website so as to falsely imply that it is associated with the Services or the Company.
 
@@ -92,9 +92,9 @@ We mention liability throughout these Terms but to put it all in one section:
 
 **_You expressly understand and agree that the Company shall not be liable, in law or in equity, to you or to any third party for any direct, indirect, incidental, lost profits, special, consequential, punitive or exemplary damages, including, but not limited to, damages for loss of profits, goodwill, use, data or other intangible losses (even if the Company has been advised of the possibility of such damages), resulting from: (i) the use or the inability to use the Services; (ii) the cost of procurement of substitute goods and services resulting from any goods, data, information or services purchased or obtained or messages received or transactions entered into through or from the Services; (iii) unauthorized access to or alteration of your transmissions or data; (iv) statements or conduct of any third party on the service; (v) or any other matter relating to this Terms of Service or the Services, whether as a breach of contract, tort (including negligence whether active or passive), or any other theory of liability._**
 
-In other words: choosing to use our Services does mean you are making a bet on us. If the bet does not work out, that's on you, not us. We do our darnedest to be as safe a bet as possible through careful management of the business; investments in security, infrastructure, and talent; and in general [giving a damn](https://chadwick-ou.com/about). If you choose to use our Services, thank you for betting on us.
+In other words: choosing to use our Services does mean you are making a bet on us. If the bet does not work out, that's on you, not us. We do our darnedest to be as safe a bet as possible through careful management of the business; investments in security, infrastructure, and talent; and in general [giving a damn]({{site.company_url}}/about). If you choose to use our Services, thank you for betting on us.
 
-If you have a question about any of the Terms of Service, please [contact our Support team](hello@chadwick-ou.com).
+If you have a question about any of the Terms of Service, please [contact our Support team](mailto:{{site.email}}).
 
-**Far Horizons OÜ policies are open source, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Adapted from the [Basecamp open-source policies](https://github.com/basecamp/policies) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+**{{site.company_name}} policies are open source, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Adapted from the [Basecamp open-source policies](https://github.com/basecamp/policies) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 **

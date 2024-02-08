@@ -1,9 +1,9 @@
 ---
-title: "Chadwick OÜ Security Response"
-description: "Have you discovered a web security flaw that might impact Chadwick OÜ? Here’s how you can report it."
+title: "Far Horizons OÜ Security Response"
+description: "Have you discovered a web security flaw that might impact Far Horizons OÜ? Here’s how you can report it."
 ---
 
-# Chadwick OÜ security response
+# {{site.company_name}} OÜ security response
 
 ## We appreciate your concern
 
@@ -11,7 +11,7 @@ Keeping customer data safe and secure is a huge responsibility and a top priorit
 
 ## Reporting security problems
 
-Send urgent or sensitive reports directly to [hello@chadwick-ou.com](mailto:hello@chadwick-ou.com). Use [our public key](https://keybase.io/vertis/pgp_keys.asc?fingerprint=a5d4492ad0e1ade0389a5444a96df4ac718095bc) to keep your message safe and please provide us with a secure way to respond. We’ll get back to you as soon as we can, usually within 24 hours. Please follow up if you don’t hear back.
+Send urgent or sensitive reports directly to [{{site.email}}](mailto:{{site.email}}). Use [our public key](https://keybase.io/vertis/pgp_keys.asc?fingerprint=a5d4492ad0e1ade0389a5444a96df4ac718095bc) to keep your message safe and please provide us with a secure way to respond. We’ll get back to you as soon as we can, usually within 24 hours. Please follow up if you don’t hear back.
 
 ## Tracking and disclosing security issues
 

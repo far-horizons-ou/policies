@@ -5,11 +5,11 @@ description: The privacy of your data — and it is your data, not ours! — is 
 
 # Privacy policy
 
-_Last updated: June 148, 2020_
+_Last updated: June 14, 2020_
 
 The privacy of your data — and it is your data, not ours! — is a big deal to us. In this policy, we lay out: what data we collect and why; how your data is handled; and your rights to your data. We promise we never sell your data: never have, never will.
 
-This policy applies to all products built and maintained by Far Horizon OÜ including Twirrl, and Parrot.
+This policy applies to all products built and maintained by {{site.company_name}} including Twirrl, and Parrot.
 
 ## What we collect and why
 
@@ -17,11 +17,11 @@ Our guiding principle is to collect only what we need. Here’s what that means 
 
 ### Identity & access
 
-When you sign up for a Far Horizon OÜ product, we typically ask for identifying information such as your name, email address, and maybe a company name. That’s just so you can personalize your new account, and we can send you invoices, updates, or other essential information. We sometimes also give you the option to add a profile picture that displays in our products, but we do not normally look at or access that picture. We’ll never sell your personal info to third parties, and we won’t use your name or company in marketing statements without your permission either.
+When you sign up for a {{site.company_name}} product, we typically ask for identifying information such as your name, email address, and maybe a company name. That’s just so you can personalize your new account, and we can send you invoices, updates, or other essential information. We sometimes also give you the option to add a profile picture that displays in our products, but we do not normally look at or access that picture. We’ll never sell your personal info to third parties, and we won’t use your name or company in marketing statements without your permission either.
 
 ### Billing information
 
-When you pay for a Far Horizon OÜ product, we ask for your credit card and billing address. That's so we can charge you for service, calculate taxes due, and send you invoices. Your credit card is passed directly to our payment processor and doesn't ever go through our servers. We store a record of the payment transaction, including the last 4 digits of the credit card number and as-of billing address, for account history, invoicing, and billing support. We store your billing address to calculate any sales tax due in the United States, to detect fraudulent credit card transactions, and to print on your invoices.
+When you pay for a {{site.company_name}} product, we ask for your credit card and billing address. That's so we can charge you for service, calculate taxes due, and send you invoices. Your credit card is passed directly to our payment processor and doesn't ever go through our servers. We store a record of the payment transaction, including the last 4 digits of the credit card number and as-of billing address, for account history, invoicing, and billing support. We store your billing address to calculate any sales tax due in the United States, to detect fraudulent credit card transactions, and to print on your invoices.
 
 ### Geolocation data
 
@@ -43,7 +43,7 @@ At this time, our sites and applications do not respond to Do Not Track beacons 
 
 ### Voluntary correspondence
 
-When you write Far Horizon OÜ with a question or to ask for help, we keep that correspondence, including the email address, so that we have a history of past correspondences to reference if you reach out in the future.
+When you write {{site.company_name}} with a question or to ask for help, we keep that correspondence, including the email address, so that we have a history of past correspondences to reference if you reach out in the future.
 
 We also store any information you volunteer like surveys. Sometimes when we do customer interviews, we may ask for your permission to record the conversation for future reference or use. We only do so if you give your express consent.
 
@@ -57,12 +57,12 @@ We also do not collect any biometric data. You are given the option to add a pic
 
 Our default practice is to not access your information. The only times we’ll ever access or share your info are:
 
-- **To provide products or services you've requested**. We do use some third-party services to run our applications and only to the extent necessary process some or all of your personal information via these third parties. You can view the list of third-party services we use in each product: [Twirrl](twirrl-subprocessors/index.md), and [Parrot](parrot-subprocessors/index.md). Having subprocessors means we are using technology to access your data. No Far Horizons OÜ human looks at your data for these purposes. We also use some other processors for other business functions, which you can view: [Company processors](company-processors/index.md).
+- **To provide products or services you've requested**. We do use some third-party services to run our applications and only to the extent necessary process some or all of your personal information via these third parties. You can view the list of third-party services we use in each product: [Twirrl](twirrl-subprocessors/index.md), and [Parrot](parrot-subprocessors/index.md). Having subprocessors means we are using technology to access your data. No {{site.company_name}} human looks at your data for these purposes. We also use some other processors for other business functions, which you can view: [Company processors](company-processors/index.md).
 - **To help you troubleshoot or squash a software bug, with your permission.** If at any point we need to access your account to help you with a Support case, we will ask for your consent before proceeding.
 - **To investigate, prevent, or take action regarding [restricted uses](../abuse/index.md).** Accessing a customer’s account when investigating potential abuse is a measure of last resort. We have an obligation to protect the privacy and safety of both our customers and the people reporting issues to us. We do our best to balance those responsibilities throughout the process. If we do discover you are using our products for a restricted purpose, we will report the incident to the appropriate authorities.
 - **When required under applicable law.** If the appropriate law enforcement authorities have the necessary warrant, criminal subpoena, or court order requiring we share data, we have to comply. Otherwise, we flat-out reject requests from local and federal law enforcement when they seek data. And unless we’re legally prevented from it, we’ll always inform you when such requests are made. **_We have never received a National Security Letter or Foreign Intelligence Surveillance Act (FISA) order._**
 
-If Far Horizon OÜ is acquired by or merged with another company — we don’t plan on that, but if it happens — we’ll notify you well before any info about you is transferred and becomes subject to a different privacy policy.
+If {{site.company_name}} is acquired by or merged with another company — we don’t plan on that, but if it happens — we’ll notify you well before any info about you is transferred and becomes subject to a different privacy policy.
 
 ## Location of Site and Data
 
@@ -70,12 +70,12 @@ Our products and other web properties are operated in both the United States and
 
 ## Your Rights With Respect to Your Information
 
-At Far Horizons OÜ, we apply the same data rights to all customers, regardless of their location. Currently some of the most privacy-forward regulations in place are the European Union’s General Data Protection Regulation (“GDPR”) and California Consumer Privacy Act (“CCPA”) in the US. Chadwick OÜ recognizes all of the rights granted in these regulations, except as limited by applicable law. These rights include:
+At {{site.company_name}}, we apply the same data rights to all customers, regardless of their location. Currently some of the most privacy-forward regulations in place are the European Union’s General Data Protection Regulation (“GDPR”) and California Consumer Privacy Act (“CCPA”) in the US. {{site.company_name}} recognizes all of the rights granted in these regulations, except as limited by applicable law. These rights include:
 
 - **Right to Know.** You have the right to know what personal information is collected, used, shared or sold. We outline both the categories and specific bits of data we collect, as well as how they are used, in this privacy policy.
 - **Right of Access.** This includes your right to access the personal information we gather about you, and your right to obtain information about the sharing, storage, security and processing of that information.
 - **Right to Correction.** You have the right to request correction of your personal information.
-- **Right to Erasure / “To be Forgotten”.** This is your right to request, subject to certain limitations under applicable law, that your personal information be erased from our possession and, by extension, all of our service providers. Fulfillment of some data deletion requests may prevent you from using Far Horizons OÜ services because our applications may then no longer work. In such cases, a data deletion request may result in closing your account.
+- **Right to Erasure / “To be Forgotten”.** This is your right to request, subject to certain limitations under applicable law, that your personal information be erased from our possession and, by extension, all of our service providers. Fulfillment of some data deletion requests may prevent you from using {{site.company_name}} services because our applications may then no longer work. In such cases, a data deletion request may result in closing your account.
 - **Right to Complain.** You have the right to make a complaint regarding our handling of your personal information with the appropriate supervisory authority. To identify your specific authority or find out more about this right, EU individuals should go to [https://edpb.europa.eu/about-edpb/board/members_en](https://edpb.europa.eu/about-edpb/board/members_en).
 - **Right to Restrict Processing.** This is your right to request restriction of how and why your personal information is used or processed, including opting out of sale of personal information. (Again: we never have and never will sell your personal data).
 - **Right to Object.** You have the right, in certain situations, to object to how or why your personal information is processed.
@@ -85,7 +85,7 @@ At Far Horizons OÜ, we apply the same data rights to all customers, regardless 
 
 Many of these rights can be exercised by signing in and directly updating your account information.
 
-If you have questions about exercising these rights or need assistance, please contact us at [privacy@farhorizons.io](mailto:privacy@farhorizons.io) or at Far Horizons OÜ, Sepapaja tn 6 Tallinn Harjumaa 15551. For requests to delete personal information or know what personal information has been collected, we will first verify your identity using a combination of at least two pieces of information already collected including your user email address. If an authorized agent is corresponding on your behalf, we will first need written consent with a signature from the account holder before proceeding.
+If you have questions about exercising these rights or need assistance, please contact us at [{{site.privacy_email}}](mailto:{{site.privacy_email}}) or at {{site.company_name}}, {{site.company_address}}. For requests to delete personal information or know what personal information has been collected, we will first verify your identity using a combination of at least two pieces of information already collected including your user email address. If an authorized agent is corresponding on your behalf, we will first need written consent with a signature from the account holder before proceeding.
 
 If you are in the EU, you can identify your specific authority to file a complaint or find out more about GDPR, at [https://edpb.europa.eu/about-edpb/board/members_en](https://edpb.europa.eu/about-edpb/board/members_en).
 
@@ -103,6 +103,6 @@ We also delete your data after an account is cancelled. In this case, there is n
 
 ## Changes & questions
 
-We may update this policy as needed to comply with relevant regulations and reflect any new practices. You can view a history of the changes to our policies since mid-2018 [on Github](https://github.com/chadwick-ou/policies/commits/master). Whenever we make a significant change to our policies, we will also announce them on our [company blog](https://chadwick-ou.com/blog/).
+We may update this policy as needed to comply with relevant regulations and reflect any new practices. You can view a history of the changes to our policies since mid-2018 [on Github]({{site.policies_github_url}}/commits/main). Whenever we make a significant change to our policies, we will also announce them on our [company blog]({{site.company_blog_url}}).
 
-Have any questions, comments, or concerns about this privacy policy, your data, or your rights with respect to your information? Please get in touch by emailing us at [privacy@chadwick-ou.com](mailto:privacy@chadwick-ou.com) and we’ll be happy to answer them!
+Have any questions, comments, or concerns about this privacy policy, your data, or your rights with respect to your information? Please get in touch by emailing us at [{{site.privacy_email}}](mailto:{{site.privacy_email}}) and we’ll be happy to answer them!

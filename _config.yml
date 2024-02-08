@@ -32,6 +32,14 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 # github_username: jekyll
 
+policies_github_url: https://github.com/far-horizons-ou/policies
+company_url: https://farhorizons.io
+company_name: Far Horizon OÜ
+company_address: "Sepapaja 6, Tallinn, 15551, Estonia"
+report_email: report@farhorizons.io
+privacy_email: privacy@farhorizons.io
+appeals_email: appeals@farhorizons.io
+
 defaults:
   - scope:
       path: "" # an empty string here means all files in the project

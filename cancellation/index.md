@@ -1,6 +1,6 @@
 ---
 title: Cancellation policy
-description: Everything you need to know about canceling your Far Horizon OÜ  product account.
+description: Everything you need to know about canceling your {{site.company_name}}  product account.
 ---
 
 # Cancellation policy
@@ -23,7 +23,7 @@ We’ll permanently delete your account data within 30 days from our servers and
 
 We won’t bill you again once you cancel. We don’t automatically prorate any unused time you may have left but if you haven’t used your account in months or just started a new billing cycle, [contact us]({{ site.email_support }}) for a [fair refund](../refund/index.md). We’ll treat you right.
 
-## Far Horizon OÜ -initiated cancellations
+## {{site.company_name}} -initiated cancellations
 
 We may cancel accounts if they have been inactive for an extended period:
 

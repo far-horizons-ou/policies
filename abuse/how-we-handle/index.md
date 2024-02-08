@@ -15,7 +15,7 @@ Sometimes, though, we discover potential abusive usage as detailed in our [Use R
 
 ### Human oversight
 
-Who’s “we”, you ask? It’s us: folks from the Far Horizons OÜ team. We have an internal committee who review all potential abuse cases. This committee includes our executives, Luke, and representatives from multiple departments across the company. On rare occasions for particularly sensitive situations or if legally required, we may also seek counsel from external experts.
+Who’s “we”, you ask? It’s us: folks from the {{site.company_name}} team. We have an internal committee who review all potential abuse cases. This committee includes our executives, Luke, and representatives from multiple departments across the company. On rare occasions for particularly sensitive situations or if legally required, we may also seek counsel from external experts.
 
 ### Balanced responsibilities
 
@@ -39,7 +39,7 @@ From our experience, we learn about potential abuse because:
 
 - Someone alerts us. We give [abuse reports](../index.md) our full care and attention. Our Support team also responds to every question or comment that comes in. If we notice anything in those emails that points to a violation, we will look into it.
 - We notice an anomaly in our business operations monitoring. We monitor a range of things about our products, like signup volume and error rates of web requests. If we see something weird with those numbers, we get to the bottom of it.
-- We stumble upon public web content that links an individual or organization to a Far Horizon OÜ product. We aren’t scouring the Internet looking for those links, but if we do come across any, we check them out.
+- We stumble upon public web content that links an individual or organization to a {{site.company_name}} product. We aren’t scouring the Internet looking for those links, but if we do come across any, we check them out.
 
 This list is not exhaustive; there are always edge cases. We will update the list if we find regular new avenues.
 
@@ -67,6 +67,6 @@ For other cases, we’ll take a case-by-case approach to clear things up.
 
 If we terminate an account without notice, the decision is final.
 
-For other cases, we will consider good faith appeals sent to [appeals@farhorizons.io](mailto:appeals@farhorizons.io) by the account owner within 14 calendar days.
+For other cases, we will consider good faith appeals sent to [{{site.appeals_email}}](mailto:{{site.appeals_email}}) by the account owner within 14 calendar days.
 
-\*_This policy and process applies to any product created and owned by Far Horizons OÜ. That includes Twirrl, and Parrot._
+\*_This policy and process applies to any product created and owned by {{site.company_name}}. That includes Twirrl, and Parrot._

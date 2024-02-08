@@ -1,6 +1,6 @@
-# Chadwick OÜ Policies, Terms, and Legal Stuff
+# Far Horizons OÜ Policies, Terms, and Legal Stuff
 
-Chadwick OÜ policies are open source, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Adapted from the [Basecamp open-source policies](https://github.com/basecamp/policies) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Far Horizons OÜ policies are open source, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Adapted from the [Basecamp open-source policies](https://github.com/basecamp/policies) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 The rough print and the fine print. We try to make all our policies as clear, fair, and readable as possible.
 
