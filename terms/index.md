@@ -1,17 +1,17 @@
 ---
 title: Terms of Service
-description: All the terms that you agree to when you sign up for a Chadwick OÜ product.
+description: All the terms that you agree to when you sign up for a Far Horizons OÜ product.
 ---
 
 # Terms of Service
 
 _Last updated: June 14, 2020_
 
-From everyone at Chadwick OÜ, thank you for using our products! We build them to help you create amazing content. Because we don't know every one of our customers personally, we have to put in place some Terms of Service to help keep the ship afloat.
+From everyone at Far Horizons OÜ, thank you for using our products! We build them to help you create amazing content. Because we don't know every one of our customers personally, we have to put in place some Terms of Service to help keep the ship afloat.
 
-When we say “Company”, “we”, “our”, or “us” in this document, we are referring to Chadwick OÜ. Chadwick OÜ is an Estonian company created as a legal entity to facilitate the creation of the products you use.
+When we say “Company”, “we”, “our”, or “us” in this document, we are referring to Far Horizons OÜ. Far Horizons OÜ is an Estonian company created as a legal entity to facilitate the creation of the products you use.
 
-When we say “Services”, we mean any product created and maintained by Chadwick OÜ. That includes Twirrl and Parrot, whether delivered within a web browser, desktop application, mobile application, or another format.
+When we say “Services”, we mean any product created and maintained by Far Horizons OÜ. That includes Twirrl and Parrot, whether delivered within a web browser, desktop application, mobile application, or another format.
 
 We may update these Terms of Service in the future. You can track all changes made [on Github](https://github.com/chadwick-ou/policies/commits/master). Typically these changes have been to clarify some of these terms by linking to an expanded related policy. Whenever we make a significant change to our policies, we will also announce them on our [company blog](https://chadwick-ou.com/blog).
 
@@ -52,14 +52,14 @@ If you violate of any of the terms, we may terminate your account. That's a broa
 1. Your use of the Services is at your sole risk. We provide these Services on an “as is” and “as available” basis. We do not offer service-level agreements for our Services but do take uptime of our applications seriously. Visit [https://status.twirrl.co/](https://status.twirrl.co/) and [https://status.parrot.dev/](https://status.parrot.dev/) to see the status of our Services.
 2. We reserve the right to temporarily disable your account if your usage significantly exceeds the average usage of other customers of the Services. Of course, we'll reach out to the account owner before taking any action except in rare cases where the level of use may negatively impact the performance of the Service for other customers.
 3. We take many measures to protect and secure your data through backups, redundancies, and encryption. We enforce encryption for data transmission from the public Internet. There are some edge cases where we may send your data through our network unencrypted. Please refer to our [Security Overview](../security/index.md) for full details.
-4. When you use our Services, you entrust us with your data. We take that trust to heart. You agree that Chadwick OÜ may process your data as described in our [Privacy Policy](../privacy/index.md) and for no other purpose. We as humans can access your data for the following reasons:
+4. When you use our Services, you entrust us with your data. We take that trust to heart. You agree that Far Horizons OÜ may process your data as described in our [Privacy Policy](../privacy/index.md) and for no other purpose. We as humans can access your data for the following reasons:
 
 - To help you with support requests you make. We'll ask for express consent before accessing your account.
-- To safeguard Chadwick OÜ. We'll look at logs and metadata as part of our work to ensure the security of your data and the Services as a whole. If necessary, we may also access accounts as part of an [abuse report investigation](../abuse/how-we-handle/index.md).
+- To safeguard Far Horizons OÜ. We'll look at logs and metadata as part of our work to ensure the security of your data and the Services as a whole. If necessary, we may also access accounts as part of an [abuse report investigation](../abuse/how-we-handle/index.md).
 - To the extent required by applicable law.
 
 5. We use third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run the Services. You can see a list of all subprocessors who handle personal data for [Twirrl](../privacy/twirrl-subprocessors/index.md), and [Parrot](../privacy/parrot-subprocessors/index.md).
-6. We process any data you share with us only for the purpose you signed up for and as described in these Terms of Service, [Privacy policy](../privacy/index.md), and [other policies](../index.md). We do not retain, use, disclose, or sell any of that information for any other commercial purposes unless we have your explicit permission. And on the flip-side, you agree to comply with your requirements and not use Chadwick OÜ’s Services in a way that violates the regulations.
+6. We process any data you share with us only for the purpose you signed up for and as described in these Terms of Service, [Privacy policy](../privacy/index.md), and [other policies](../index.md). We do not retain, use, disclose, or sell any of that information for any other commercial purposes unless we have your explicit permission. And on the flip-side, you agree to comply with your requirements and not use Far Horizons OÜ’s Services in a way that violates the regulations.
 
 ## Copyright and Content Ownership
 
@@ -96,5 +96,5 @@ In other words: choosing to use our Services does mean you are making a bet on u
 
 If you have a question about any of the Terms of Service, please [contact our Support team](hello@chadwick-ou.com).
 
-**Chadwick OÜ policies are open source, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Adapted from the [Basecamp open-source policies](https://github.com/basecamp/policies) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+**Far Horizons OÜ policies are open source, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Adapted from the [Basecamp open-source policies](https://github.com/basecamp/policies) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 **

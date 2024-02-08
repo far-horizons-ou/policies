@@ -7,9 +7,9 @@ description: How Chadwick OÜ handles copyright infringement claims.
 
 ## Notification of Copyright Infringement Claims
 
-Making original work is hard! As described in our [Use Restrictions policy](../abuse/index.md), you can’t use Chadwick OÜ products\* to make or disseminate work that uses the intellectual property of others beyond the bounds of [fair use](https://www.copyright.gov/fair-use/more-info.html).
+Making original work is hard! As described in our [Use Restrictions policy](../abuse/index.md), you can’t use Far Horizon OÜ products\* to make or disseminate work that uses the intellectual property of others beyond the bounds of [fair use](https://www.copyright.gov/fair-use/more-info.html).
 
-Are you a copyright owner? Under the Digital Millennium Copyright Act (17 U.S.C. § 512), you have the right to notify us (Chadwick OÜ) if you believe that an account user of any product we built and maintain has infringed on your work(s) as copyright owner. To be effective, the notification of claimed infringement must be written. Please include the following information:
+Are you a copyright owner? Under the Digital Millennium Copyright Act (17 U.S.C. § 512), you have the right to notify us (Far Horizon OÜ ) if you believe that an account user of any product we built and maintain has infringed on your work(s) as copyright owner. To be effective, the notification of claimed infringement must be written. Please include the following information:
 
 - A physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed.
 - Identification of the copyrighted work(s) claimed to have been infringed. If there are multiple, please share a representative list of those works.
@@ -36,8 +36,8 @@ You can notify us of either copyright infringement claims or DCMA counter-notifi
 
 **By email**: [report@chadwick-ou.com](mailto:report@chadwick-ou.com)
 
-**By mail**: Chadwick OÜ
+**By mail**: Far Horizon OÜ
 Sepapaja tn 6
 Tallinn Harjumaa 15551
 
-\*_This policy and process applies to any product created and owned by Chadwick OÜ. That includes Twirrl and Parrot._
+\*_This policy and process applies to any product created and owned by Far Horizon OÜ . That includes Twirrl and Parrot._
