@@ -8,7 +8,7 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 #
-# If you need help with YAML syntax, here are some quick references for you: 
+# If you need help with YAML syntax, here are some quick references for you:
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 #
@@ -18,20 +18,22 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@example.com
+title: Far Horizon OÜ Policies
+email: hello@farhorizons.io
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Welcome to Far Horizon OÜ's official policy portal. Here, you'll find all the necessary
+  information regarding our terms of service, privacy policy, refund and cancellation policies,
+  and guidelines on restricted use. Our aim is to maintain transparency and ensure that our
+  policies are clear, fair, and easily accessible to all our users. Navigate through our site
+  to find detailed explanations on how we protect your data, how you can manage your account,
+  and our commitment to creating a safe and respectful environment for everyone.
 baseurl: "/policies" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+# twitter_username: jekyllrb
+# github_username: jekyll
 
 defaults:
-  -
-    scope:
+  - scope:
       path: "" # an empty string here means all files in the project
     values:
       layout: "default"
@@ -41,7 +43,6 @@ defaults:
 plugins:
   - jekyll-feed
   - jekyll-relative-links
-
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
