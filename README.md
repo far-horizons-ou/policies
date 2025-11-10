@@ -1,6 +1,28 @@
 # Far Horizons OÜ Policies, Terms, and Legal Stuff
 
+## About This Repository
+
+This repository contains the legal policy documentation for Far Horizons OÜ, an Estonian company. It is built as a Jekyll-based static website and serves as our public-facing policy portal.
+
 Far Horizons OÜ policies are open source, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Adapted from the [Basecamp open-source policies](https://github.com/basecamp/policies) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+### Technical Overview
+
+- **Technology**: Jekyll static site generator
+- **Purpose**: Publicly accessible legal and policy documentation
+- **Deployment**: Configured to run at `/policies` subdirectory
+- **License**: Open source under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+### What's Included
+
+This repository provides comprehensive policy templates covering:
+- Terms of Service
+- Privacy Policy
+- Security Overview
+- Refund and Cancellation Policies
+- Use Restrictions
+
+The policies apply to Far Horizons OÜ products and services, including Twirrl and Parrot.
 
 The rough print and the fine print. We try to make all our policies as clear, fair, and readable as possible.
 
