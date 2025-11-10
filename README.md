@@ -1,10 +1,10 @@
 # Far Horizons OÜ Policies, Terms, and Legal Stuff
 
-> **Project Status**: ⚠️ **Minimally Maintained / Stale** - Last significant update February 2024. This repository contains policy templates but may not reflect active products or services.
+## About This Repository
 
-## What This Is
+This repository contains the legal policy documentation for Far Horizons OÜ, an Estonian company. It is built as a Jekyll-based static website and serves as our public-facing policy portal.
 
-This is a **Jekyll-based static website** that hosts legal policy documentation for Far Horizons OÜ, an Estonian company. The repository serves as a public-facing policy portal that can be deployed to GitHub Pages or any static hosting service.
+Far Horizons OÜ policies are open source, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Adapted from the [Basecamp open-source policies](https://github.com/basecamp/policies) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ### Technical Overview
 
@@ -12,27 +12,17 @@ This is a **Jekyll-based static website** that hosts legal policy documentation 
 - **Purpose**: Publicly accessible legal and policy documentation
 - **Deployment**: Configured to run at `/policies` subdirectory
 - **License**: Open source under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- **Source**: Adapted from [Basecamp open-source policies](https://github.com/basecamp/policies) / [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
-### Features
+### What's Included
 
-- Comprehensive policy templates covering Terms of Service, Privacy, Security, Refunds, and Cancellations
-- Jekyll templating with variables for easy customization (company name, emails, addresses)
-- Responsive HTML layout
-- GitHub-friendly markdown format
-- Version-controlled policy change tracking
+This repository provides comprehensive policy templates covering:
+- Terms of Service
+- Privacy Policy
+- Security Overview
+- Refund and Cancellation Policies
+- Use Restrictions
 
-## Development Timeline
-
-- **June 14, 2020**: Initial fork from Basecamp policies, customized for Chadwick OÜ
-- **2020-2021**: Minor updates and dependency security patches
-- **April 3, 2021**: Updated for products "Pushbear" → "Parrot"
-- **February 8, 2024**: Rebranded to Far Horizons OÜ, styling updates
-- **2024-Present**: No significant activity (~21 months dormant as of Nov 2025)
-
-## Current State
-
-The policies reference products named "Twirrl" and "Parrot" but it's unclear if these products are actively developed or deployed. The policy documents themselves are comprehensive and complete, but have not been updated since the February 2024 rebrand.
+The policies apply to Far Horizons OÜ products and services, including Twirrl and Parrot.
 
 The rough print and the fine print. We try to make all our policies as clear, fair, and readable as possible.
 
