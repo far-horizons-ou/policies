@@ -11,7 +11,7 @@ We want satisfied customers, not hostages. That’s why we make it easy for you 
 
 Account owners can follow these instructions to cancel in-app:
 
-- [Twirrl](https://app.twirrl.co/cancel)
+- [Twirrl](https://twirrl.co/app/cancel)
 
 Our legal responsibility is to account owners, which means we cannot cancel an account at the request of anyone else. If for whatever reason you no longer know who the account owner is, [contact us]({{ site.email_support }}). We will gladly reach out to any current account owners at the email addresses we have on file.
 
