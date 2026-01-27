@@ -5,13 +5,14 @@ description: Everything you need to know about canceling your {{site.company_nam
 
 # Cancellation policy
 
-_Last updated: June 14, 2020_
+_Last updated: January 27, 2025_
 
 We want satisfied customers, not hostages. That’s why we make it easy for you to cancel your account directly in all of our apps — no phone calls required, no questions asked.
 
 Account owners can follow these instructions to cancel in-app:
 
 - [Twirrl](https://twirrl.co/app/cancel)
+- [OrderFiles](https://orderfiles.app/admin) — cancel from your account settings
 
 Our legal responsibility is to account owners, which means we cannot cancel an account at the request of anyone else. If for whatever reason you no longer know who the account owner is, [contact us]({{ site.email_support }}). We will gladly reach out to any current account owners at the email addresses we have on file.
 

@@ -5,13 +5,13 @@ description: All the terms that you agree to when you sign up for a {{site.compa
 
 # Terms of Service
 
-_Last updated: June 14, 2020_
+_Last updated: January 27, 2025_
 
 From everyone at {{site.company_name}}, thank you for using our products! We build them to help you create amazing content. Because we don't know every one of our customers personally, we have to put in place some Terms of Service to help keep the ship afloat.
 
 When we say “Company”, “we”, “our”, or “us” in this document, we are referring to {{site.company_name}}. {{site.company_name}} is an Estonian company created as a legal entity to facilitate the creation of the products you use.
 
-When we say “Services”, we mean any product created and maintained by {{site.company_name}}. That includes Twirrl and Parrot, whether delivered within a web browser, desktop application, mobile application, or another format.
+When we say "Services", we mean any product created and maintained by {{site.company_name}}. That includes Twirrl, Parrot, and OrderFiles, whether delivered within a web browser, desktop application, mobile application, or another format.
 
 We may update these Terms of Service in the future. You can track all changes made [on Github]({{site.policies_github_url}}/commits/main). Typically these changes have been to clarify some of these terms by linking to an expanded related policy. Whenever we make a significant change to our policies, we will also announce them on our [company blog]({{site.company_url}}/blog).
 
@@ -37,7 +37,7 @@ If you violate of any of the terms, we may terminate your account. That's a broa
 ## Cancellation and Termination
 
 1. You are solely responsible for properly canceling your account. Within each of our Services, we provide a simple no-questions-asked cancellation link. You can find instructions for how to cancel your account in our [Cancellation policy](../cancellation/index.md). An email or phone request to cancel your account is not automatically considered cancellation. If you need help cancelling your account, you can always [contact our Support team]({{ site.email_support }}).
-2. All of your content will be inaccessible from the Services immediately upon cancellation. Within 30 days, all content will be permanently deleted from active systems and logs. Within 60 days, all content will be permanently deleted from our backups. We cannot recover this information once it has been permanently deleted. If you want to export any data before your account is cancelled, we‘ve provided instructions for [Twirrl]() and [Parrot]().
+2. All of your content will be inaccessible from the Services immediately upon cancellation. Within 30 days, all content will be permanently deleted from active systems and logs. Within 60 days, all content will be permanently deleted from our backups. We cannot recover this information once it has been permanently deleted.
 3. If you cancel the Service before the end of your current paid up month, your cancellation will take effect immediately, and you will not be charged again. We do not automatically prorate unused time in the last billing cycle. See our [Fair Refund policy](../refund/index.md) for more details.
 4. We have the right to suspend or terminate your account and refuse any and all current or future use of our Services for any reason at any time. Suspension means you and any other users on your account will not be able to access the account or any content in the account. Termination will furthermore result in the deletion of your account or your access to your account, and the forfeiture and relinquishment of all content in your account. We also reserve the right to refuse the use of the Services to anyone for any reason at any time. We have this clause because statistically speaking, out of the hundreds of thousands of accounts on our Services, there is at least one doing something nefarious. There are some things we staunchly stand against and this clause is how we exercise that stance. For more details, see our [Use Restrictions policy](../abuse/index.md).
 5. Verbal, physical, written or other abuse (including threats of abuse or retribution) of Company employee or officer will result in immediate account termination.
@@ -58,7 +58,7 @@ If you violate of any of the terms, we may terminate your account. That's a broa
 - To safeguard {{site.company_name}}. We'll look at logs and metadata as part of our work to ensure the security of your data and the Services as a whole. If necessary, we may also access accounts as part of an [abuse report investigation](../abuse/how-we-handle/index.md).
 - To the extent required by applicable law.
 
-5. We use third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run the Services. You can see a list of all subprocessors who handle personal data for [Twirrl](../privacy/twirrl-subprocessors/index.md), and [Parrot](../privacy/parrot-subprocessors/index.md).
+5. We use third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run the Services. You can see a list of all subprocessors who handle personal data for [Twirrl](../privacy/twirrl-subprocessors/index.md), [Parrot](../privacy/parrot-subprocessors/index.md), and [OrderFiles](../privacy/orderfiles-subprocessors/index.md).
 6. We process any data you share with us only for the purpose you signed up for and as described in these Terms of Service, [Privacy policy](../privacy/index.md), and [other policies](../index.md). We do not retain, use, disclose, or sell any of that information for any other commercial purposes unless we have your explicit permission. And on the flip-side, you agree to comply with your requirements and not use {{site.company_name}}’s Services in a way that violates the regulations.
 
 ## Copyright and Content Ownership

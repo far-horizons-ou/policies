@@ -5,7 +5,7 @@ description: Guiding principles and process for investigating abuse reports
 
 # How we handle abusive usage
 
-_Last updated: June 14, 2020_
+_Last updated: January 27, 2025_
 
 We build our products to make it easier to understand the world. We are proud of that purpose and trust that our customers use our products for appropriate endeavors.
 
@@ -69,4 +69,4 @@ If we terminate an account without notice, the decision is final.
 
 For other cases, we will consider good faith appeals sent to [{{site.appeals_email}}](mailto:{{site.appeals_email}}) by the account owner within 14 calendar days.
 
-\*_This policy and process applies to any product created and owned by {{site.company_name}}. That includes Twirrl, and Parrot._
+\*_This policy and process applies to any product created and owned by {{site.company_name}}. That includes Twirrl, Parrot, and OrderFiles._

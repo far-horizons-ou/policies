@@ -39,4 +39,4 @@ You can notify us of either copyright infringement claims or DCMA counter-notifi
 **By mail**: {{site.company_name}}
 {{site.company_address}}
 
-\*_This policy and process applies to any product created and owned by {{site.company_name}} . That includes Twirrl and Parrot._
+\*_This policy and process applies to any product created and owned by {{site.company_name}}. That includes Twirrl, Parrot, and OrderFiles._

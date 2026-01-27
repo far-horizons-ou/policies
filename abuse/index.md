@@ -5,7 +5,7 @@ description: It is not okay to use Far Horizons OÜ products for these restricte
 
 # Use Restrictions
 
-_Last updated: June 14, 2020_
+_Last updated: January 27, 2025_
 
 We also recognize that technology is an amplifier: it can enable the helpful and the harmful. That’s why we’ve established this policy. If you have an account with any of our products, you can’t use them for any of the restricted purposes listed below. If we find out you are, [we will take action](how-we-handle/index.md).
 
@@ -29,4 +29,4 @@ Please share as much as you are comfortable with about the account, the content 
 
 Someone on our team will respond within one business day to let you know we’ve begun investigating. We will also let you know the outcome of our investigation (unless you ask us not to or we are not allowed to under law).
 
-\*_This policy and process applies to any product created and owned by {{site.company_name}}. That includes Twirrl, and Parrot._
+\*_This policy and process applies to any product created and owned by {{site.company_name}}. That includes Twirrl, Parrot, and OrderFiles._

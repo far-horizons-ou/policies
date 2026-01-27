@@ -22,7 +22,7 @@ This repository provides comprehensive policy templates covering:
 - Refund and Cancellation Policies
 - Use Restrictions
 
-The policies apply to Far Horizons OÜ products and services, including Twirrl and Parrot.
+The policies apply to Far Horizons OÜ products and services, including Twirrl, Parrot, and OrderFiles.
 
 The rough print and the fine print. We try to make all our policies as clear, fair, and readable as possible.
 
