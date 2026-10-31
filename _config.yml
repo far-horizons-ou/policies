@@ -28,7 +28,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   to find detailed explanations on how we protect your data, how you can manage your account,
   and our commitment to creating a safe and respectful environment for everyone.
 baseurl: "/policies" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://far-horizons-ou.github.io" # GitHub Pages host (baseurl supplies /policies)
 # twitter_username: jekyllrb
 # github_username: jekyll
 
