@@ -1,0 +1,375 @@
+name: Database change gate
+
+on:
+  pull_request:
+  merge_group:
+    types: [checks_requested]
+
+permissions:
+  contents: read
+
+jobs:
+  database-change-gate:
+    name: database-change-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Classify the complete change against its base
+        env:
+          READ_TOKEN: ${{ github.token }}
+        shell: python
+        # Keep this self-contained so a ruleset run never loads code or configuration
+        # from the repository being checked. Git fetches objects into a bare repo.
+        run: |
+          from bisect import bisect_right
+          import base64
+          import json
+          import os
+          import re
+          import subprocess
+          import tempfile
+          from pathlib import PurePosixPath
+
+          DB_PATH = re.compile(
+              r"(?:^|/)(?:migrations?(?:[-_][^/]+)?|prisma|drizzle|alembic|"
+              r"db|database|database-pg|[a-z0-9-]+-db|db-client)(?:/|$)|"
+              r"(?:^|/)(?:db|database|prisma|drizzle|knex|sequelize|sqlx)"
+              r"(?:[.-](?:client|config|server|connection))?\.[^/]+$",
+              re.I,
+          )
+          DB_WIRING = re.compile(
+              r"\b(?:[A-Z0-9]+_)*(?:DATABASE_URL|DATABASE_PASSWORD|DATABASE_HOST|"
+              r"DB_URL|DB_HOST|DB_PORT|DB_USER|DB_NAME|DB_PASSWORD|DB_CONNECTION_STRING|DIRECT_URL|"
+              r"(?:POSTGRES(?:QL)?|MYSQL|NEON|MONGODB)_[A-Z_]+|PGHOST|PGUSER|PGPASSWORD|PGDATABASE|PGPORT|"
+              r"D1_DATABASE_ID|HYPERDRIVE_ID|PRISMA_DATABASE_URL)\b|"
+              r"(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?)://|"
+              r"\b(?:pg_dump(?:all)?|pg_restore|psql|mysqldump|mongodump|mongorestore)\b|"
+              r"\b(?:prisma|drizzle-kit|knex|sequelize|alembic|flyway)\s+"
+              r"(?:migrate|migration|db|push|upgrade|deploy|repair|generate)\b|"
+              r"\b(?:wrangler\s+d1|rails\s+db:|manage\.py\s+migrate|sqlx\s+migrate)\b|"
+              r"""(?:^|[\s'"\[])\b(?:d1_databases|hyperdrive|database_id|migrations_dir)\b['"]?\s*(?:[:=\]])|"""
+              r"""\bimage\s*:\s*['"]?(?:[\w.-]+/)*(?:postgres|mysql|mariadb|mongo)(?:[:@\s'"]|$)|"""
+              r'\b(?:resource|data)\s+"\w*(?:postgres|database|rds|d1_database)\w*"',
+              re.M,
+          )
+          DB_DRIVER = re.compile(
+              r"""(?:['"]|\b(?:use|extern crate|import)\s+)(?:@prisma/[^'"]+|drizzle-orm|"""
+              r"""kysely|typeorm|sequelize|knex|pg|postgres|postgresql|mysql2|mongodb|mongoose|"""
+              r"""better-sqlite3|node:sqlite|sqlite3|sqlalchemy|psycopg\w*|sqlx|rusqlite|tokio_postgres)"""
+              r"""(?:[/:'"\s;]|$)|\b(?:PrismaClient|PgPool|SqlitePool)\b"""
+          )
+          DB_ACCESS = re.compile(
+              r"\b(?:db|database|dbClient|prisma|basePrisma|pool|tx|trx|connection|[A-Z_]*DB)\s*\??\.\s*"
+              r"(?:query|prepare|batch|exec(?:ute)?|transaction|select|insert|update|delete|run|"
+              r"collection|\$(?:queryRaw\w*|executeRaw\w*|transaction|extends)|[a-zA-Z_]\w*\s*\.\s*(?:find\w*|create\w*|update\w*|delete\w*|upsert|count))\b|"
+              r"\b(?:D1Database|Hyperdrive|withPg|withDb|getDb|createDb|softDeleteFilterArgs)\b|"
+              r"\b[a-zA-Z_]\w*(?:Repository|Repo)\s*\??\.\s*"
+              r"(?:find\w*|fetch\w*|get\w*|list\w*|create\w*|insert\w*|update\w*|"
+              r"delete\w*|upsert\w*|remove\w*|save\w*|persist\w*)(?=\s*\()|"
+              r"""(?:from\s+|require\s*\(\s*)['"][^'"\s]*/(?:db|db-client|database-pg|[\w-]+-db)['"]|"""
+              r"\benv\.[A-Z_][A-Z0-9_]*\.(?:prepare|batch|exec)"
+          )
+          DB_SQL = re.compile(
+              r"(?i:\b(?:CREATE|ALTER|DROP|TRUNCATE)\s+(?:TABLE|INDEX|VIEW|SCHEMA|DATABASE)\b|"
+              r"\b(?:INSERT\s+INTO|DELETE\s+FROM|SELECT\s+[^;]{1,1000}?\s+FROM|"
+              r"UPDATE\s+[\w.\x22]+\s+SET)\s+[\w.\x22]+)"
+          )
+          MANIFEST = re.compile(r"(?:^|/)(?:[\w.-]+\.lock|[\w.-]+-lock\.[\w]+|"
+                                r"package\.json|Cargo\.toml|Gemfile|go\.(?:mod|sum)|"
+                                r"requirements[^/]*\.txt|pyproject\.toml|Pipfile(?:\.lock)?)$")
+          DB_DEPENDENCY = re.compile(
+              r"(?<![\w.-])(?:@prisma/[\w-]+|drizzle-orm|drizzle-kit|kysely|typeorm|"
+              r"sequelize|knex|pg|postgres|mysql2|mongodb|mongoose|better-sqlite3|sqlite3|"
+              r"sqlalchemy|psycopg\w*|sqlx(?:-[\w-]+)?|rusqlite|tokio-postgres)(?![\w.-])"
+          )
+          TEST = re.compile(r"(?:^|/)(?:test|tests|__tests__|spec|__mocks__)(?:/|$)|"
+                            r"(?:[._-](?:test|spec)|(?:^|/)test_[^/]*)\.[^/]+$", re.I)
+          DOC_EXT = {".md", ".rst", ".adoc"}
+          TEXT_EXT = set("""
+              .c .cc .conf .cpp .cs .css .csv .dart .erb .ex .exs .go .gql .graphql .graphqls
+              .h .hcl .html .mdx .ini .java .js .json .jsonc .jsx .kt .kts .lock .mjs .cjs .php
+              .properties .proto .py .rb .rs .sh .bash .fish .svelte .svg .swift .tf .tfvars .toml .ts
+              .tsx .txt .vue .xml .yaml .yml
+          """.split())
+          ASSET_EXT = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".woff", ".woff2"}
+          SHA = re.compile(r"[0-9a-f]{40}")
+
+
+          HUNK = re.compile(r"^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@", re.M)
+          STRING = re.compile(r"""(?s)"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\x60(?:\\.|[^\x60\\])*\x60""")
+          OPEN_CALL = re.compile(r"\s*(?:\??\.\s*\w+\s*)?\(")
+          COMMENT = r"//[^\n]*|/\*[\s\S]*?\*/"
+          SOURCE_TOKEN = re.compile(STRING.pattern + "|" + COMMENT)
+          CALL_TOKEN = re.compile(SOURCE_TOKEN.pattern + r"|[()]")
+
+          HEREDOC = re.compile(
+              r"""(?m)(?<!<)<<-?[ \t]*(?P<quote>['"]?)(?P<tag>[A-Za-z_]\w*)(?P=quote)[^\n]*\n"""
+              r"(?P<body>[\s\S]*?)^\t*(?P=tag)[ \t]*\r?$"
+          )
+          IDENTIFIER = r"[$A-Za-z_][$\w]*"
+          # A spread operand is a local reference even though it follows a dot.
+          REFERENCE = re.compile(r"(?:(?<![.$\w])|(?<=\.\.\.))" + IDENTIFIER)
+          WRITE = re.compile(
+              r"(?<![.$\w])(?P<name>" + IDENTIFIER + r")"
+              r"(?:[ \t]*(?:\." + IDENTIFIER + r"|\[[^\]\n]*\]))*"
+              r"(?:[ \t]*:[^=;\n]+)?[ \t]*(?:[+*%/-]?=(?!=|>))"
+          )
+          FUNCTION = re.compile(r"\bfunction[ \t]+(?P<name>" + IDENTIFIER + r")[ \t]*(?=\()")
+          FUNCTION_BODY = re.compile(r"\s*(?::[^\n{]+)?\s*(?=\{)")
+          EXPRESSION_TOKEN = re.compile(SOURCE_TOKEN.pattern + r"|[(){}\[\];,\n]")
+
+          def call_end(source, offset):
+              """Include arguments and fluent calls after a recognized database operation."""
+              while opening := OPEN_CALL.match(source, offset):
+                  depth = 1
+                  for token in CALL_TOKEN.finditer(source, opening.end()):
+                      if token.group() == "(":
+                          depth += 1
+                      elif token.group() == ")":
+                          depth -= 1
+                          if not depth:
+                              offset = token.end()
+                              break
+                  else:
+                      return len(source)
+              return offset
+
+          def expression_end(source, offset):
+              """Find the end of a binding value, including multiline literals and calls."""
+              start = offset + re.match(r"\s*", source[offset:]).end()
+              depth = 0
+              for token in EXPRESSION_TOKEN.finditer(source, start):
+                  value = token.group()
+                  if value in ("(", "{", "["):
+                      depth += 1
+                  elif value in (")", "}", "]"):
+                      if not depth:
+                          return token.start()
+                      depth -= 1
+                  elif value in (";", ",", "\n") and not depth:
+                      return token.start()
+              return len(source)
+
+          def changed_inputs(source, arguments, changed):
+              """Trace references through local assignments without evaluating PR code."""
+              # Preserve offsets so a binding can be compared with the same Git hunks.
+              code = SOURCE_TOKEN.sub(lambda token: re.sub(r"[^\n]", " ", token.group()), source)
+              pending = {name for start, end in arguments for name in REFERENCE.findall(code, start, end)}
+              bindings = {}
+              for write in WRITE.finditer(code):
+                  bindings.setdefault(write["name"], []).append((write.start(), write.end()))
+              for function in FUNCTION.finditer(code):
+                  signature_end = call_end(code, function.end())
+                  body = FUNCTION_BODY.match(code, signature_end)
+                  if body:
+                      bindings.setdefault(function["name"], []).append((function.start(), body.end()))
+              visited = set()
+              while pending:
+                  name = pending.pop()
+                  if name in visited:
+                      continue
+                  visited.add(name)
+                  for start, value in bindings.get(name, ()):
+                      end = expression_end(source, value)
+                      if changed(start, end):
+                          return True
+                      pending.update(REFERENCE.findall(code, value, end))
+              return False
+
+          def changed_source(source, ranges, test_only):
+              newlines = [match.start() for match in re.finditer("\n", source)]
+
+              def changed(start, end):
+                  first = bisect_right(newlines, start) + 1
+                  last = bisect_right(newlines, max(start, end - 1)) + 1
+                  return any(count and line <= last and line + count > first for line, count in ranges)
+
+              for marker in (DB_WIRING, DB_DRIVER):
+                  if any(changed(hit.start(), call_end(source, hit.end())) for hit in marker.finditer(source)):
+                      return "database: database driver, connection or tooling"
+              if not test_only:
+                  arguments = []
+                  for hit in DB_ACCESS.finditer(source):
+                      end = call_end(source, hit.end())
+                      if changed(hit.start(), end):
+                          return "database: SQL or data access"
+                      if end > hit.end():
+                          arguments.append((hit.end(), end))
+                  if arguments and changed_inputs(source, arguments, changed):
+                      return "database: input to a database operation"
+                  for literal in SOURCE_TOKEN.finditer(source):
+                      if literal.group()[0] != "/" and changed(*literal.span()) and DB_SQL.search(literal.group()):
+                          return "database: SQL or data access"
+              return None
+
+          def revision(value):
+              if not isinstance(value, str) or not SHA.fullmatch(value) or value == "0" * 40:
+                  raise ValueError("missing or invalid commit ID")
+              return value
+
+          def event_range(kind, event, workflow_head):
+              head = revision(workflow_head)
+              if kind == "pull_request":
+                  pr = event["pull_request"]
+                  base, ref = revision(pr["base"]["sha"]), "refs/heads/" + pr["base"]["ref"]
+                  parents = [base, revision(pr["head"]["sha"])]
+              elif kind == "merge_group":
+                  group = event["merge_group"]
+                  base, ref = revision(group["base_sha"]), group["base_ref"]
+                  if head != revision(group["head_sha"]):
+                      raise ValueError("merge group head differs from the run head")
+                  parents = None
+              else:
+                  raise ValueError("unsupported event")
+              if head == base or not ref.startswith("refs/heads/"):
+                  raise ValueError("invalid base or empty comparison range")
+              return base, ref, head, parents
+
+          def scan(git, base, head):
+              raw = git("diff", "--raw", "--no-abbrev", "--no-renames", "-z", base, head, "--")
+              records = raw.split(b"\0")
+              if records.pop() != b"" or len(records) % 2:
+                  raise ValueError("incomplete diff")
+              findings = []
+              for header, name in zip(records[::2], records[1::2]):
+                  old_mode, new_mode, old_oid, new_oid, status = header.decode("ascii").split()
+                  path = name.decode("utf-8")
+                  if not old_mode.startswith(":") or not path or status not in {"A", "D", "M", "T"}:
+                      raise ValueError("unexpected diff entry")
+                  result = classify(git, base, head, path, (old_mode[1:], new_mode), (old_oid, new_oid))
+                  if result:
+                      findings.append((path, result))
+              return findings
+
+          def classify(git, base, head, path, modes, oids):
+              file = PurePosixPath(path)
+              ext = file.suffix.lower()
+              if any(mode not in {"000000", "100644", "100755"} for mode in modes):
+                  return "unknown: symlink, submodule or unsupported file mode"
+              if "000000" not in modes and modes[0] != modes[1]:
+                  return "unknown: file execution mode changed"
+              if ext in {".sql", ".prisma", ".sqlite", ".sqlite3", ".db", ".dump"}:
+                  return "database: schema, SQL or database artifact"
+              if ext in DOC_EXT and "100755" not in modes:
+                  return None
+              test = TEST.search(path)
+              if DB_PATH.search(path) and not test:
+                  return "database: migration or data-access path"
+              if ext in ASSET_EXT and "100755" not in modes:
+                  return None
+              manifest = MANIFEST.search(path)
+              if not (manifest or ext in TEXT_EXT or file.name.startswith((".env", "Dockerfile"))
+                      or file.name in {"Makefile", "justfile", ".gitignore", ".gitattributes", "CODEOWNERS"}):
+                  return "unknown: unclassified file type"
+              for mode, oid in zip(modes, oids):
+                  if mode != "000000" and int(git("cat-file", "-s", oid)) > 4 * 1024 * 1024:
+                      return "unknown: file exceeds the scan limit"
+              if file.name == ".gitattributes":
+                  return "unknown: Git attributes can change diff handling"
+              blobs = []
+              for mode, oid in zip(modes, oids):
+                  blob = b"" if mode == "000000" else git("cat-file", "blob", oid)
+                  if b"\0" in blob:
+                      return "unknown: binary content in text file"
+                  blobs.append(blob.decode("utf-8"))
+
+              patch = git("diff", "--no-ext-diff", "--no-textconv", "--no-color",
+                          "--text", "--unified=" + ("1" if manifest else "0"),
+                          base, head, "--", ":(literal)" + path).decode("utf-8")
+              if not patch:
+                  return "unknown: file diff is unavailable"
+              if manifest:
+                  changes = "\n".join(line[1:] for line in patch.splitlines()
+                                      if line.startswith(("+", "-", " ")) and not line.startswith(("+++", "---")))
+                  if DB_DEPENDENCY.search(changes) or DB_WIRING.search(changes):
+                      return "database: database dependency or command"
+                  if file.name == "package.json":
+                      versions = [json.loads(blob or "{}") for blob in blobs]
+                      if not all(isinstance(version, dict) for version in versions):
+                          return "unknown: invalid package manifest"
+                      if versions[0].get("scripts", {}) != versions[1].get("scripts", {}):
+                          return "unknown: package script or lifecycle wiring changed"
+                  return None
+
+              if path.startswith((".github/workflows/", ".github/actions/")):
+                  if any(DB_WIRING.search(source) or DB_DRIVER.search(source) for source in blobs):
+                      return "database: database workflow or action"
+                  return "unknown: workflow or action can delegate to database tooling"
+
+              shell = ext in {".sh", ".bash", ".fish"} or any(
+                  re.match(r"#![^\n]*\b(?:bash|zsh|ksh|sh|fish)\b", source) for source in blobs
+              )
+              if shell and any(DB_WIRING.search(source) or any(
+                  DB_SQL.search(doc["body"]) for doc in HEREDOC.finditer(source)
+              ) for source in blobs):
+                  return "database: database command or SQL in shell tooling"
+
+              if file.name.startswith((".env", "Dockerfile", "wrangler.", "compose.", "docker-compose.")):
+                  if any(DB_WIRING.search(source) for source in blobs):
+                      return "database: database environment or service wiring"
+
+              test_only = test and not file.name.endswith((".pg-test.ts", ".db-test.ts"))
+              hunks = [match.groups() for match in HUNK.finditer(patch)]
+              if not hunks and blobs[0] != blobs[1]:
+                  return "unknown: changed text without diff hunks"
+              for side, source in enumerate(blobs):
+                  ranges = [(int(hunk[2 * side]), int(hunk[2 * side + 1] or "1")) for hunk in hunks]
+                  result = changed_source(source, ranges, test_only)
+                  if result:
+                      return result
+              if not test and any(part in {"repositories", "data-access"} for part in file.parts[:-1]):
+                  return "unknown: repository or data-access implementation"
+              return None
+
+          def verdict(findings):
+              database = any(reason.startswith("database:") for _, reason in findings)
+              flag = "true" if database else "unknown" if findings else "false"
+              print(f"database_change={flag}")
+              for path, reason in findings:
+                  print(f"{reason} in {json.dumps(path)}")
+              return int(bool(findings))
+
+          def main():
+              with open(os.environ["GITHUB_EVENT_PATH"], encoding="utf-8") as source:
+                  event = json.load(source)
+              base, ref, head, parents = event_range(
+                  os.environ["GITHUB_EVENT_NAME"], event, os.environ["GITHUB_SHA"]
+              )
+              repository = os.environ["GITHUB_REPOSITORY"]
+              if not re.fullmatch(r"[\w.-]+/[\w.-]+", repository, re.ASCII):
+                  raise ValueError("invalid target repository")
+              auth = base64.b64encode(("x-access-token:" + os.environ["READ_TOKEN"]).encode()).decode()
+              with tempfile.TemporaryDirectory() as directory:
+                  def git(*args, env=None):
+                      result = subprocess.run(["git", *args], cwd=directory, env=env,
+                                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                      if result.returncode:
+                          raise ValueError(f"Git {args[0]} failed (exit {result.returncode})")
+                      return result.stdout
+
+                  git("init", "--bare", "--quiet")
+                  git("check-ref-format", ref)
+                  git("fetch", "--quiet", "--no-tags", "--depth=1",
+                      f"https://github.com/{repository}.git", ref + ":refs/db-gate/base", head,
+                      env={**os.environ, "GIT_TERMINAL_PROMPT": "0", "GIT_CONFIG_COUNT": "1",
+                           "GIT_CONFIG_KEY_0": "http.https://github.com/.extraheader",
+                           "GIT_CONFIG_VALUE_0": "AUTHORIZATION: basic " + auth})
+                  if git("rev-parse", "refs/db-gate/base").strip().decode() != base:
+                      raise ValueError("target branch advanced since this event")
+                  if parents is not None:
+                      headers = git("cat-file", "commit", head).split(b"\n\n", 1)[0]
+                      actual = [line[7:].decode() for line in headers.splitlines()
+                                if line.startswith(b"parent ")]
+                      if actual != parents:
+                          raise ValueError("PR merge commit does not match the event's base and head")
+                  return verdict(scan(git, base, head))
+
+          if __name__ == "__main__":
+              try:
+                  raise SystemExit(main())
+              except (OSError, ValueError, KeyError, TypeError) as error:
+                  print("database_change=unknown")
+                  print(f"Could not classify the complete change ({type(error).__name__})")
+                  if type(error) is ValueError:
+                      print(str(error))
+                  raise SystemExit(1)
