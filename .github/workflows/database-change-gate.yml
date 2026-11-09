@@ -102,6 +102,21 @@ jobs:
           SOURCE_TOKEN = re.compile(STRING.pattern + "|" + COMMENT)
           CALL_TOKEN = re.compile(SOURCE_TOKEN.pattern + r"|[()]")
 
+          HEREDOC = re.compile(
+              r"""(?m)(?<!<)<<-?[ \t]*(?P<quote>['"]?)(?P<tag>[A-Za-z_]\w*)(?P=quote)[^\n]*\n"""
+              r"(?P<body>[\s\S]*?)^\t*(?P=tag)[ \t]*\r?$"
+          )
+          IDENTIFIER = r"[$A-Za-z_][$\w]*"
+          REFERENCE = re.compile(r"(?<![.$\w])" + IDENTIFIER)
+          WRITE = re.compile(
+              r"(?<![.$\w])(?P<name>" + IDENTIFIER + r")"
+              r"(?:[ \t]*(?:\." + IDENTIFIER + r"|\[[^\]\n]*\]))*"
+              r"(?:[ \t]*:[^=;\n]+)?[ \t]*(?:[+*%/-]?=(?!=|>))"
+          )
+          FUNCTION = re.compile(r"\bfunction[ \t]+(?P<name>" + IDENTIFIER + r")[ \t]*(?=\()")
+          FUNCTION_BODY = re.compile(r"\s*(?::[^\n{]+)?\s*(?=\{)")
+          EXPRESSION_TOKEN = re.compile(SOURCE_TOKEN.pattern + r"|[(){}\[\];,\n]")
+
           def call_end(source, offset):
               """Include arguments and fluent calls after a recognized database operation."""
               while opening := OPEN_CALL.match(source, offset):
@@ -118,6 +133,48 @@ jobs:
                       return len(source)
               return offset
 
+          def expression_end(source, offset):
+              """Find the end of a binding value, including multiline literals and calls."""
+              start = offset + re.match(r"\s*", source[offset:]).end()
+              depth = 0
+              for token in EXPRESSION_TOKEN.finditer(source, start):
+                  value = token.group()
+                  if value in ("(", "{", "["):
+                      depth += 1
+                  elif value in (")", "}", "]"):
+                      if not depth:
+                          return token.start()
+                      depth -= 1
+                  elif value in (";", ",", "\n") and not depth:
+                      return token.start()
+              return len(source)
+
+          def changed_inputs(source, arguments, changed):
+              """Trace references through local assignments without evaluating PR code."""
+              # Preserve offsets so a binding can be compared with the same Git hunks.
+              code = SOURCE_TOKEN.sub(lambda token: re.sub(r"[^\n]", " ", token.group()), source)
+              pending = {name for start, end in arguments for name in REFERENCE.findall(code, start, end)}
+              bindings = {}
+              for write in WRITE.finditer(code):
+                  bindings.setdefault(write["name"], []).append((write.start(), write.end()))
+              for function in FUNCTION.finditer(code):
+                  signature_end = call_end(code, function.end())
+                  body = FUNCTION_BODY.match(code, signature_end)
+                  if body:
+                      bindings.setdefault(function["name"], []).append((function.start(), body.end()))
+              visited = set()
+              while pending:
+                  name = pending.pop()
+                  if name in visited:
+                      continue
+                  visited.add(name)
+                  for start, value in bindings.get(name, ()):
+                      end = expression_end(source, value)
+                      if changed(start, end):
+                          return True
+                      pending.update(REFERENCE.findall(code, value, end))
+              return False
+
           def changed_source(source, ranges, test_only):
               newlines = [match.start() for match in re.finditer("\n", source)]
 
@@ -130,9 +187,15 @@ jobs:
                   if any(changed(hit.start(), call_end(source, hit.end())) for hit in marker.finditer(source)):
                       return "database: database driver, connection or tooling"
               if not test_only:
+                  arguments = []
                   for hit in DB_ACCESS.finditer(source):
-                      if changed(hit.start(), call_end(source, hit.end())):
+                      end = call_end(source, hit.end())
+                      if changed(hit.start(), end):
                           return "database: SQL or data access"
+                      if end > hit.end():
+                          arguments.append((hit.end(), end))
+                  if arguments and changed_inputs(source, arguments, changed):
+                      return "database: input to a database operation"
                   for literal in SOURCE_TOKEN.finditer(source):
                       if literal.group()[0] != "/" and changed(*literal.span()) and DB_SQL.search(literal.group()):
                           return "database: SQL or data access"
@@ -231,6 +294,14 @@ jobs:
                   if any(DB_WIRING.search(source) or DB_DRIVER.search(source) for source in blobs):
                       return "database: database workflow or action"
                   return "unknown: workflow or action can delegate to database tooling"
+
+              shell = ext in {".sh", ".bash", ".fish"} or any(
+                  re.match(r"#![^\n]*\b(?:bash|zsh|ksh|sh|fish)\b", source) for source in blobs
+              )
+              if shell and any(DB_WIRING.search(source) or any(
+                  DB_SQL.search(doc["body"]) for doc in HEREDOC.finditer(source)
+              ) for source in blobs):
+                  return "database: database command or SQL in shell tooling"
 
               if file.name.startswith((".env", "Dockerfile", "wrangler.", "compose.", "docker-compose.")):
                   if any(DB_WIRING.search(source) for source in blobs):

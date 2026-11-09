@@ -213,6 +213,54 @@ class DatabaseGateTest(unittest.TestCase):
         head = self.commit({"src/route.ts": before.replace("active: true", "active: false")})
         self.check_flag(self.group(head), "true")
 
+    def test_sql_heredoc_where_change_is_flagged(self):
+        self.git("switch", "-q", "main")
+        before = (
+            "#!/bin/sh\npsql <<'SQL'\n"
+            "select id\nfrom listings\nwhere visible = true;\nSQL\n"
+        )
+        indirect = before.replace("psql", '"$QUERY_CLIENT"')
+        self.base = self.commit({"scripts/listings.sh": before, "scripts/query.sh": indirect})
+        self.git("switch", "-qC", "change", "main")
+        head = self.commit({
+            "scripts/listings.sh": before.replace("= true", "= false"),
+            "scripts/query.sh": indirect.replace("= true", "= false"),
+        })
+        result = self.group(head)
+        self.check_flag(result, "true")
+        self.assertEqual(result.stdout.count("database:"), 2, result.stdout)
+
+    def test_values_feeding_prisma_filters_are_flagged(self):
+        self.git("switch", "-q", "main")
+        before = (
+            "const active = true;\n"
+            "const where: Prisma.ListingWhereInput = {\n"
+            "    active,\n"
+            "};\n"
+            "const listings = await prisma.listing.findMany({ where });\n"
+            "const message = 'Available listings';\n"
+            "return new Response(message);\n"
+        )
+        self.base = self.commit({"src/route.ts": before})
+        self.git("switch", "-qC", "change", "main")
+        head = self.commit({"src/route.ts": before.replace("Available listings", "Ready")})
+        self.check_flag(self.group(head), "false")
+        head = self.commit({"src/route.ts": before.replace("const active = true", "const active = false")})
+        self.check_flag(self.group(head), "true")
+
+    def test_local_helper_feeding_a_filter_is_flagged(self):
+        self.git("switch", "-q", "main")
+        before = (
+            "function filters(): Prisma.ListingWhereInput {\n"
+            "    return { active: true };\n"
+            "}\n"
+            "const listings = await prisma.listing.findMany({ where: filters() });\n"
+        )
+        self.base = self.commit({"src/route.ts": before})
+        self.git("switch", "-qC", "change", "main")
+        head = self.commit({"src/route.ts": before.replace("active: true", "active: false")})
+        self.check_flag(self.group(head), "true")
+
     def test_workflow_with_indirect_command_is_unknown(self):
         head = self.commit({".github/workflows/deploy.yml": "steps: [{run: make release}]\n"})
         result = self.group(head)
