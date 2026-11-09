@@ -248,6 +248,17 @@ class DatabaseGateTest(unittest.TestCase):
         head = self.commit({"src/route.ts": before.replace("const active = true", "const active = false")})
         self.check_flag(self.group(head), "true")
 
+    def test_prisma_filter_spread_uses_its_local_binding(self):
+        self.git("switch", "-q", "main")
+        before = (
+            "const defaults = { active: true };\n"
+            "const listings = await prisma.listing.findMany({ where: { ...defaults } });\n"
+        )
+        self.base = self.commit({"src/route.ts": before})
+        self.git("switch", "-qC", "change", "main")
+        head = self.commit({"src/route.ts": before.replace("active: true", "active: false")})
+        self.check_flag(self.group(head), "true")
+
     def test_local_helper_feeding_a_filter_is_flagged(self):
         self.git("switch", "-q", "main")
         before = (

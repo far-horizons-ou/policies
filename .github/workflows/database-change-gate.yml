@@ -107,7 +107,8 @@ jobs:
               r"(?P<body>[\s\S]*?)^\t*(?P=tag)[ \t]*\r?$"
           )
           IDENTIFIER = r"[$A-Za-z_][$\w]*"
-          REFERENCE = re.compile(r"(?<![.$\w])" + IDENTIFIER)
+          # A spread operand is a local reference even though it follows a dot.
+          REFERENCE = re.compile(r"(?:(?<![.$\w])|(?<=\.\.\.))" + IDENTIFIER)
           WRITE = re.compile(
               r"(?<![.$\w])(?P<name>" + IDENTIFIER + r")"
               r"(?:[ \t]*(?:\." + IDENTIFIER + r"|\[[^\]\n]*\]))*"
