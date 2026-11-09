@@ -21,6 +21,7 @@ jobs:
         # Keep this self-contained so a ruleset run never loads code or configuration
         # from the repository being checked. Git fetches objects into a bare repo.
         run: |
+          from bisect import bisect_right
           import base64
           import json
           import os
@@ -64,11 +65,13 @@ jobs:
               r"\b(?:D1Database|Hyperdrive|withPg|withDb|getDb|createDb|softDeleteFilterArgs)\b|"
               r"\b[a-zA-Z_]\w*(?:Repository|Repo)\s*\??\.\s*"
               r"(?:find\w*|fetch\w*|get\w*|list\w*|create\w*|insert\w*|update\w*|"
-              r"delete\w*|upsert\w*|remove\w*|save\w*|persist\w*)\s*\(|"
+              r"delete\w*|upsert\w*|remove\w*|save\w*|persist\w*)(?=\s*\()|"
               r"""(?:from\s+|require\s*\(\s*)['"][^'"\s]*/(?:db|db-client|database-pg|[\w-]+-db)['"]|"""
-              r"\benv\.[A-Z_][A-Z0-9_]*\.(?:prepare|batch|exec)\s*\(|"
+              r"\benv\.[A-Z_][A-Z0-9_]*\.(?:prepare|batch|exec)"
+          )
+          DB_SQL = re.compile(
               r"(?i:\b(?:CREATE|ALTER|DROP|TRUNCATE)\s+(?:TABLE|INDEX|VIEW|SCHEMA|DATABASE)\b|"
-              r"\b(?:INSERT\s+INTO|DELETE\s+FROM|SELECT\s+[^;\r\n]{1,250}?\s+FROM|"
+              r"\b(?:INSERT\s+INTO|DELETE\s+FROM|SELECT\s+[^;]{1,1000}?\s+FROM|"
               r"UPDATE\s+[\w.\x22]+\s+SET)\s+[\w.\x22]+)"
           )
           MANIFEST = re.compile(r"(?:^|/)(?:[\w.-]+\.lock|[\w.-]+-lock\.[\w]+|"
@@ -90,6 +93,50 @@ jobs:
           """.split())
           ASSET_EXT = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".woff", ".woff2"}
           SHA = re.compile(r"[0-9a-f]{40}")
+
+
+          HUNK = re.compile(r"^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@", re.M)
+          STRING = re.compile(r"""(?s)"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\x60(?:\\.|[^\x60\\])*\x60""")
+          OPEN_CALL = re.compile(r"\s*(?:\??\.\s*\w+\s*)?\(")
+          COMMENT = r"//[^\n]*|/\*[\s\S]*?\*/"
+          SOURCE_TOKEN = re.compile(STRING.pattern + "|" + COMMENT)
+          CALL_TOKEN = re.compile(SOURCE_TOKEN.pattern + r"|[()]")
+
+          def call_end(source, offset):
+              """Include arguments and fluent calls after a recognized database operation."""
+              while opening := OPEN_CALL.match(source, offset):
+                  depth = 1
+                  for token in CALL_TOKEN.finditer(source, opening.end()):
+                      if token.group() == "(":
+                          depth += 1
+                      elif token.group() == ")":
+                          depth -= 1
+                          if not depth:
+                              offset = token.end()
+                              break
+                  else:
+                      return len(source)
+              return offset
+
+          def changed_source(source, ranges, test_only):
+              newlines = [match.start() for match in re.finditer("\n", source)]
+
+              def changed(start, end):
+                  first = bisect_right(newlines, start) + 1
+                  last = bisect_right(newlines, max(start, end - 1)) + 1
+                  return any(count and line <= last and line + count > first for line, count in ranges)
+
+              for marker in (DB_WIRING, DB_DRIVER):
+                  if any(changed(hit.start(), call_end(source, hit.end())) for hit in marker.finditer(source)):
+                      return "database: database driver, connection or tooling"
+              if not test_only:
+                  for hit in DB_ACCESS.finditer(source):
+                      if changed(hit.start(), call_end(source, hit.end())):
+                          return "database: SQL or data access"
+                  for literal in SOURCE_TOKEN.finditer(source):
+                      if literal.group()[0] != "/" and changed(*literal.span()) and DB_SQL.search(literal.group()):
+                          return "database: SQL or data access"
+              return None
 
           def revision(value):
               if not isinstance(value, str) or not SHA.fullmatch(value) or value == "0" * 40:
@@ -135,6 +182,8 @@ jobs:
               ext = file.suffix.lower()
               if any(mode not in {"000000", "100644", "100755"} for mode in modes):
                   return "unknown: symlink, submodule or unsupported file mode"
+              if "000000" not in modes and modes[0] != modes[1]:
+                  return "unknown: file execution mode changed"
               if ext in {".sql", ".prisma", ".sqlite", ".sqlite3", ".db", ".dump"}:
                   return "database: schema, SQL or database artifact"
               if ext in DOC_EXT and "100755" not in modes:
@@ -153,29 +202,51 @@ jobs:
                       return "unknown: file exceeds the scan limit"
               if file.name == ".gitattributes":
                   return "unknown: Git attributes can change diff handling"
-              if manifest:
-                  patch = git("diff", "--no-ext-diff", "--no-textconv", "--unified=1",
-                              base, head, "--", ":(literal)" + path)
-                  if not patch or b"Binary files " in patch or b"\0" in patch:
-                      return "unknown: manifest diff is unavailable"
-                  changes = patch.decode("utf-8")
-                  return ("database: database dependency or command"
-                          if DB_DEPENDENCY.search(changes) or DB_WIRING.search(changes) else None)
+              blobs = []
               for mode, oid in zip(modes, oids):
-                  if mode == "000000":
-                      continue
-                  blob = git("cat-file", "blob", oid)
+                  blob = b"" if mode == "000000" else git("cat-file", "blob", oid)
                   if b"\0" in blob:
                       return "unknown: binary content in text file"
-                  source = blob.decode("utf-8")
-                  if DB_WIRING.search(source) or DB_DRIVER.search(source):
-                      return "database: database driver, connection or tooling"
-                  if (not test or file.name.endswith((".pg-test.ts", ".db-test.ts"))) and DB_ACCESS.search(source):
-                      return "database: SQL or data access"
+                  blobs.append(blob.decode("utf-8"))
+
+              patch = git("diff", "--no-ext-diff", "--no-textconv", "--no-color",
+                          "--text", "--unified=" + ("1" if manifest else "0"),
+                          base, head, "--", ":(literal)" + path).decode("utf-8")
+              if not patch:
+                  return "unknown: file diff is unavailable"
+              if manifest:
+                  changes = "\n".join(line[1:] for line in patch.splitlines()
+                                      if line.startswith(("+", "-", " ")) and not line.startswith(("+++", "---")))
+                  if DB_DEPENDENCY.search(changes) or DB_WIRING.search(changes):
+                      return "database: database dependency or command"
+                  if file.name == "package.json":
+                      versions = [json.loads(blob or "{}") for blob in blobs]
+                      if not all(isinstance(version, dict) for version in versions):
+                          return "unknown: invalid package manifest"
+                      if versions[0].get("scripts", {}) != versions[1].get("scripts", {}):
+                          return "unknown: package script or lifecycle wiring changed"
+                  return None
+
+              if path.startswith((".github/workflows/", ".github/actions/")):
+                  if any(DB_WIRING.search(source) or DB_DRIVER.search(source) for source in blobs):
+                      return "database: database workflow or action"
+                  return "unknown: workflow or action can delegate to database tooling"
+
+              if file.name.startswith((".env", "Dockerfile", "wrangler.", "compose.", "docker-compose.")):
+                  if any(DB_WIRING.search(source) for source in blobs):
+                      return "database: database environment or service wiring"
+
+              test_only = test and not file.name.endswith((".pg-test.ts", ".db-test.ts"))
+              hunks = [match.groups() for match in HUNK.finditer(patch)]
+              if not hunks and blobs[0] != blobs[1]:
+                  return "unknown: changed text without diff hunks"
+              for side, source in enumerate(blobs):
+                  ranges = [(int(hunk[2 * side]), int(hunk[2 * side + 1] or "1")) for hunk in hunks]
+                  result = changed_source(source, ranges, test_only)
+                  if result:
+                      return result
               if not test and any(part in {"repositories", "data-access"} for part in file.parts[:-1]):
                   return "unknown: repository or data-access implementation"
-              if path.startswith((".github/workflows/", ".github/actions/")):
-                  return "unknown: workflow or action can delegate to database tooling"
               return None
 
           def verdict(findings):

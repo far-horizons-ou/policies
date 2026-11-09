@@ -174,6 +174,45 @@ class DatabaseGateTest(unittest.TestCase):
         head = self.commit({"src/repositories/users.ts": "export const remove = () => invoke(5);\n"})
         self.check_flag(self.group(head), "unknown")
 
+    def test_multiline_sql_where_change_is_flagged(self):
+        self.git("switch", "-q", "main")
+        before = "export const query = `\nselect id\nfrom listings\nwhere visible = true\n`;\n"
+        self.base = self.commit({"src/listings.ts": before})
+        self.git("switch", "-qC", "change", "main")
+        head = self.commit({"src/listings.ts": before.replace("= true", "= false")})
+        self.check_flag(self.group(head), "true")
+
+    def test_lifecycle_hook_is_unknown_and_ordinary_manifest_metadata_is_allowed(self):
+        self.git("switch", "-q", "main")
+        self.base = self.commit({
+            "package.json": '{"name":"app","scripts":{"start":"node server.js"}}\n',
+            "scripts/backfill.js": "export const job = () => db.query('DELETE FROM archived');\n",
+        })
+        self.git("switch", "-qC", "change", "main")
+        metadata = '{"name":"app","description":"ordinary","scripts":{"start":"node server.js"}}\n'
+        head = self.commit({"package.json": metadata})
+        self.check_flag(self.group(head), "false")
+        head = self.commit({"package.json": metadata.replace(
+            '"start":', '"prestart":"node scripts/backfill.js","start":'
+        )})
+        self.check_flag(self.group(head), "unknown")
+
+    def test_route_copy_is_allowed_and_query_argument_change_is_flagged(self):
+        self.git("switch", "-q", "main")
+        before = (
+            "import { prisma } from '@/db';\n"
+            "const listing = await prisma.listing.findUnique({\n"
+            "    where: { active: true },\n"
+            "});\n"
+            "return new Response('Listing available');\n"
+        )
+        self.base = self.commit({"src/route.ts": before})
+        self.git("switch", "-qC", "change", "main")
+        head = self.commit({"src/route.ts": before.replace("Listing available", "Ready")})
+        self.check_flag(self.group(head), "false")
+        head = self.commit({"src/route.ts": before.replace("active: true", "active: false")})
+        self.check_flag(self.group(head), "true")
+
     def test_workflow_with_indirect_command_is_unknown(self):
         head = self.commit({".github/workflows/deploy.yml": "steps: [{run: make release}]\n"})
         result = self.group(head)
