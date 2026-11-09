@@ -159,6 +159,21 @@ class DatabaseGateTest(unittest.TestCase):
         self.check_flag(self.group(head), "unknown")
         self.check_flag(self.pull_request(head, merge_head), "unknown")
 
+    def test_repository_wrapper_and_orm_helper_are_flagged(self):
+        head = self.commit({
+            "src/handler.ts": "import { usersRepository } from './repositories/users';\n"
+                              "await usersRepository.remove(id);\n",
+            "src/soft-delete.ts": "export function softDeleteFilterArgs() { return { changed: true }; }\n",
+            "src/service.ts": "await basePrisma.$executeRaw`UPDATE users SET active = false`;\n",
+        })
+        result = self.group(head)
+        self.check_flag(result, "true")
+        self.assertEqual(result.stdout.count("database:"), 3, result.stdout)
+
+    def test_unclassified_repository_implementation_is_unknown(self):
+        head = self.commit({"src/repositories/users.ts": "export const remove = () => invoke(5);\n"})
+        self.check_flag(self.group(head), "unknown")
+
     def test_workflow_with_indirect_command_is_unknown(self):
         head = self.commit({".github/workflows/deploy.yml": "steps: [{run: make release}]\n"})
         result = self.group(head)

@@ -11,7 +11,6 @@ permissions:
 jobs:
   database-change-gate:
     name: database-change-gate
-    if: github.repository != 'far-horizons-ou/policies'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -59,10 +58,13 @@ jobs:
               r"""(?:[/:'"\s;]|$)|\b(?:PrismaClient|PgPool|SqlitePool)\b"""
           )
           DB_ACCESS = re.compile(
-              r"\b(?:db|database|dbClient|prisma|pool|tx|trx|connection|[A-Z_]*DB)\s*\??\.\s*"
+              r"\b(?:db|database|dbClient|prisma|basePrisma|pool|tx|trx|connection|[A-Z_]*DB)\s*\??\.\s*"
               r"(?:query|prepare|batch|exec(?:ute)?|transaction|select|insert|update|delete|run|"
               r"collection|\$(?:queryRaw\w*|executeRaw\w*|transaction|extends)|[a-zA-Z_]\w*\s*\.\s*(?:find\w*|create\w*|update\w*|delete\w*|upsert|count))\b|"
               r"\b(?:D1Database|Hyperdrive|withPg|withDb|getDb|createDb|softDeleteFilterArgs)\b|"
+              r"\b[a-zA-Z_]\w*(?:Repository|Repo)\s*\??\.\s*"
+              r"(?:find\w*|fetch\w*|get\w*|list\w*|create\w*|insert\w*|update\w*|"
+              r"delete\w*|upsert\w*|remove\w*|save\w*|persist\w*)\s*\(|"
               r"""(?:from\s+|require\s*\(\s*)['"][^'"\s]*/(?:db|db-client|database-pg|[\w-]+-db)['"]|"""
               r"\benv\.[A-Z_][A-Z0-9_]*\.(?:prepare|batch|exec)\s*\(|"
               r"(?i:\b(?:CREATE|ALTER|DROP|TRUNCATE)\s+(?:TABLE|INDEX|VIEW|SCHEMA|DATABASE)\b|"
@@ -170,6 +172,8 @@ jobs:
                       return "database: database driver, connection or tooling"
                   if (not test or file.name.endswith((".pg-test.ts", ".db-test.ts"))) and DB_ACCESS.search(source):
                       return "database: SQL or data access"
+              if not test and any(part in {"repositories", "data-access"} for part in file.parts[:-1]):
+                  return "unknown: repository or data-access implementation"
               if path.startswith((".github/workflows/", ".github/actions/")):
                   return "unknown: workflow or action can delegate to database tooling"
               return None
